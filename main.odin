@@ -63,8 +63,8 @@ main :: proc()
     rl.SetTargetFPS(60)
 
     // TESTING
-    test_ipa_string: string = "test striN! pFnis BnZs."
-    trunic_rune_row := IpaToTrunicRuneRow(test_ipa_string)
+    test_trunic_string: string = "test striN! pFnis BnZs."
+    trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
 
@@ -287,25 +287,25 @@ DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
 
 
 
-IpaToTrunicRuneRow :: proc(ipa_string: string) -> TrunicRuneRow
+TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
 {
     trunic_rune_array := make([dynamic]TrunicRune)
     x_position: f32 = 0
     
-    for i := 0; i < len(ipa_string); i += 1 {
+    for i := 0; i < len(trunic_string); i += 1 {
 
-        switch (GetCharType(rune(ipa_string[i]))) {
+        switch (GetCharType(rune(trunic_string[i]))) {
         case .VOWEL:
             new_rune := TrunicRune{
                 x_position,
-                rune(ipa_string[i]),
+                rune(trunic_string[i]),
                 ' ',
                 ' ',
                 false,
             }
             // check the next symbol if there is one, for if it can be merged together with the newly made trunic rune
-            if i+1 < len(ipa_string) && GetCharType(rune(ipa_string[i+1])) == .CONSONANT {
-                new_rune.consonant = rune(ipa_string[i+1])
+            if i+1 < len(trunic_string) && GetCharType(rune(trunic_string[i+1])) == .CONSONANT {
+                new_rune.consonant = rune(trunic_string[i+1])
                 new_rune.vowel_first = true
                 i += 1 // increment i with one extra in the loop, as the next char was just handeled
             }
@@ -316,20 +316,20 @@ IpaToTrunicRuneRow :: proc(ipa_string: string) -> TrunicRuneRow
             new_rune := TrunicRune{
                 x_position,
                 ' ',
-                rune(ipa_string[i]),
+                rune(trunic_string[i]),
                 ' ',
                 false,
             }
             // check the next symbol if there is one, for if it can be merged together with the newly made trunic rune
-            if i+1 < len(ipa_string) && GetCharType(rune(ipa_string[i+1])) == .VOWEL {
-                new_rune.vowel = rune(ipa_string[i+1])
+            if i+1 < len(trunic_string) && GetCharType(rune(trunic_string[i+1])) == .VOWEL {
+                new_rune.vowel = rune(trunic_string[i+1])
                 i += 1 // increment i with one extra in the loop, as the next char was just handeled
             }
             append(&trunic_rune_array, new_rune)
             x_position += RUNE_WIDTH
 
         case .SYMBOL:
-            if rune(ipa_string[i]) == ' ' {
+            if rune(trunic_string[i]) == ' ' {
                 x_position += SPACE_WIDTH
                 continue
             }
@@ -337,7 +337,7 @@ IpaToTrunicRuneRow :: proc(ipa_string: string) -> TrunicRuneRow
                 x_position,
                 ' ',
                 ' ',
-                rune(ipa_string[i]),
+                rune(trunic_string[i]),
                 false,
             }
             append(&trunic_rune_array, new_rune)
