@@ -7,7 +7,6 @@ import "core:fmt"
 
 
 SPACE_WIDTH: f32 = 0.5
-SYMBOL_WIDTH: f32 = 0.5
 RUNE_WIDTH: f32 = 1
 RUNE_MIDDLE_HEIGHT: f32 = 0.35
 RUNE_TOP_HEIGHT: f32 = 0.60
@@ -63,7 +62,7 @@ main :: proc()
     rl.SetTargetFPS(60)
 
     // TESTING
-    test_trunic_string: string = "test striN?! pFnis BnZs."
+    test_trunic_string: string = "test striN..?! pFnis \'Bnzs\'."
     trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
@@ -125,13 +124,13 @@ DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
             rl.DrawCircleV(p0, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
             rl.DrawCircleV(p1, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
         case '?':
-            rl.DrawCircleV(pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_MIDDLE_HEIGHT + RUNE_TOP_HEIGHT*2) * scale}, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(pos + {RUNE_WIDTH * 0.4 * scale, (RUNE_MIDDLE_HEIGHT + RUNE_TOP_HEIGHT*2) * scale}, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
 
-            p0: rl.Vector2 = pos + {RUNE_WIDTH * 0.1 * scale, (RUNE_TOP_HEIGHT*0.5) * scale}
-            p1: rl.Vector2 = pos + {RUNE_WIDTH * 0.5 * scale, (RUNE_TOP_HEIGHT*0.5) * scale}
-            p2: rl.Vector2 = pos + {RUNE_WIDTH * 0.5 * scale, (RUNE_TOP_HEIGHT*0.5 + RUNE_MIDDLE_HEIGHT) * scale}
-            p3: rl.Vector2 = pos + {RUNE_WIDTH * 0.2 * scale, (RUNE_TOP_HEIGHT*0.5 + RUNE_MIDDLE_HEIGHT*1.5) * scale}
-            p4: rl.Vector2 = pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_MIDDLE_HEIGHT*2 + RUNE_TOP_HEIGHT) * scale}
+            p0: rl.Vector2 = pos + {RUNE_WIDTH * 0.2 * scale, (RUNE_TOP_HEIGHT*0.5) * scale}
+            p1: rl.Vector2 = pos + {RUNE_WIDTH * 0.6 * scale, (RUNE_TOP_HEIGHT*0.5) * scale}
+            p2: rl.Vector2 = pos + {RUNE_WIDTH * 0.6 * scale, (RUNE_TOP_HEIGHT*0.5 + RUNE_MIDDLE_HEIGHT) * scale}
+            p3: rl.Vector2 = pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_TOP_HEIGHT*0.5 + RUNE_MIDDLE_HEIGHT*1.5) * scale}
+            p4: rl.Vector2 = pos + {RUNE_WIDTH * 0.4 * scale, (RUNE_MIDDLE_HEIGHT*2 + RUNE_TOP_HEIGHT) * scale}
 
             rl.DrawLineEx(p0, p1, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
             rl.DrawLineEx(p1, p2, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
@@ -142,6 +141,32 @@ DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
             rl.DrawCircleV(p2, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
             rl.DrawCircleV(p3, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
             rl.DrawCircleV(p4, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+        case '-':
+            p0: rl.Vector2 = pos + {RUNE_WIDTH*0.25 * scale, (RUNE_TOP_HEIGHT + RUNE_MIDDLE_HEIGHT) * scale}
+            p1: rl.Vector2 = pos + {RUNE_WIDTH*0.55 * scale, (RUNE_TOP_HEIGHT + RUNE_MIDDLE_HEIGHT) * scale}
+
+            rl.DrawLineEx(p0, p1, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p0, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p1, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+        case '\"':
+            p0: rl.Vector2 = pos + {RUNE_WIDTH*0.2 * scale, 0}
+            p1: rl.Vector2 = pos + {RUNE_WIDTH*0.2 * scale, RUNE_TOP_HEIGHT*0.5 * scale}
+            p2: rl.Vector2 = pos + {RUNE_WIDTH*0.4 * scale, 0}
+            p3: rl.Vector2 = pos + {RUNE_WIDTH*0.4 * scale, RUNE_TOP_HEIGHT*0.5 * scale}
+
+            rl.DrawLineEx(p0, p1, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawLineEx(p2, p3, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p0, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p1, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p2, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p3, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+        case '\'':
+            p0: rl.Vector2 = pos + {RUNE_WIDTH*0.2 * scale, 0}
+            p1: rl.Vector2 = pos + {RUNE_WIDTH*0.2 * scale, RUNE_TOP_HEIGHT*0.5 * scale}
+
+            rl.DrawLineEx(p0, p1, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p0, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(p1, RUNE_LINE_RADIUS * scale, {255, 255, 255, 255})
         case: // crash if the symbol is unknown
             fmt.println("no support for rendering of the following symbol:", trunic_rune.symbol)
             os.exit(1)
@@ -365,7 +390,18 @@ TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
                 false,
             }
             append(&trunic_rune_array, new_rune)
-            x_position += SYMBOL_WIDTH
+            switch rune(trunic_string[i]) {
+            case '.', ',', '!':
+                x_position += RUNE_WIDTH * 0.5
+            case '?':
+                x_position += RUNE_WIDTH * 0.7
+            case '-':
+                x_position += RUNE_WIDTH * 0.8
+            case '\"':
+                x_position += RUNE_WIDTH * 0.6
+            case '\'':
+                x_position += RUNE_WIDTH * 0.4
+            }
         }
     }
 

@@ -3,8 +3,6 @@
 work-in-progress project. This file will be used as a TODO list until the project matures more
 
 TODO:
-give each symbol its own width instead of using a global symbol width
-add more symbols that it is able to render. Right now it can only render '.,!'
 make the scale when rendering trunic be first based on the width of the window, but also use the width element of the TrunicRuneRow to see if it fits or not, for when you have long sentences, where it then scales it down to ensure that it fits, with some slight padding to make the trunic not touch the edges.
 
 - make a menu with buttons you can press. Note that these should scale properly depending on the resolution of the window
