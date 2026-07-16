@@ -4,19 +4,20 @@
 # with the characters being ASCII, making them more easily able to be parsed and stuff in Odin
 
 # change the value of this string to change what the program outputs
-ipa_input: str = "aɪm ˈtɛstɪŋ ˈrændəm ʃɪt"
+ipa_input: str = "tɛst strɪŋ! ˈpiːnɪs ˈeɪnəs"
 
 
 
 output_string: str = ""
 
 ipa_input = ipa_input.replace("ˈ", "")  # pretty sure that this character (which isn't an apostrophe!) is irrelevant to trunic conversion
+ipa_input = ipa_input.replace("ː", "")  # pretty sure that this character (which isn't a colon!) is irrelevant to trunic conversion
 ipa_input = ipa_input.replace("ʌ", "ə")  # I think these are the same in trunic
 
 while ipa_input != "":
 
     # include these symbols directly into the output
-    if ipa_input[0] in " \"\'.!?-":
+    if ipa_input[0] in " .,!?-\"\'":
         output_string += ipa_input[0]
         ipa_input = ipa_input[1:]
         continue

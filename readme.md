@@ -2,6 +2,11 @@
 
 work-in-progress project. This file will be used as a TODO list until the project matures more
 
+TODO:
+add more symbols that it is able to render. Right now it can only render '.,!'
+make the scale when rendering trunic be first based on the width of the window, but also use the width element of the TrunicRuneRow to see if it fits or not, for when you have long sentences, where it then scales it down to ensure that it fits, with some slight padding to make the trunic not touch the edges.
+change mentions of "ipa" in main.odin as what you have are modified ipa strings with the help of the python program, so you should probably call it something else to avoid confusion. Also especially since it has punctuation and stuff, which ipa strings don't.
+
 - make renderer for trunic based on IPA characters or something, where the "font size" is easily adjustable. It should be able to support spaces, and different punctuation for sentences and hyphenated words.
 - make a menu with buttons you can press. Note that these should scale properly depending on the resolution of the window
 
@@ -13,6 +18,8 @@ selections before starting the main part of the program:
 once you are done with this project, link it in the Finji Discord! Grape told you to do that! If you do then it would be nice to also compile a version for Windows. It's not absolutely crucial though. It's probably mostly just important if anyone says that they are specifically interested in using the program, where you can then either spend the time figuring it out, or ask for help from someone in the server who is willing to help out or something.
 
 note that runes need to keep track of their width, as it won't be constant due to punctuations and stuff! Also, keep track of all symbols that the final strings will be able to have, by seeing the possible strings that the python file is able to output!
+
+remember to make all rendering be based on the window size, and that no positions are hard-coded. Check what y position the runes are rendered at if you haven't un-hard-codified it yet.
 
 To convert a word to a string that the project can understand and make runes out of, type stuff into https://ipachart.app/ipa-translator and then put the IPA string through IpaToAscii.py. The table below shows what rune each character represents, where it is according to the graphic in https://tunic.wiki/books/secrets/page/trunic (also remember to keep this information, as it will be relevant even after the project is done... or at the very least how to translate to IPA and using the python file so that the odin program understands everything is. I guess the table doesn't matter once you have actually coded everything). Also keep in mind that the python file is still able to generate punctuations like ,.-! so the program needs to be able to render that!
 o U a G F e L B I
