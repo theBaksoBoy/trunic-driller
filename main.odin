@@ -15,7 +15,9 @@ RUNE_LINE_RADIUS: f32 = 0.05
 
 // contents of this variable is the trunic that will be drawn on the screen
 trunic_to_display: ^TrunicRuneRow
+trunic_scale: f32
 
+monitor: i32
 
 
 TrunicRune :: struct {
@@ -57,6 +59,7 @@ GetCharType :: proc(char: rune) -> CharType
 
 main :: proc()
 {
+    monitor = rl.GetCurrentMonitor()
     rl.SetConfigFlags({.WINDOW_RESIZABLE})
     rl.InitWindow(700, 700, "trunic driller")
     rl.SetTargetFPS(60)
@@ -78,6 +81,14 @@ main :: proc()
 
 Update :: proc()
 {
+    // figure out the scale that the trunic should be rendered in, depending on the window size
+    trunic_scale = f32(rl.GetMonitorWidth(monitor)) * 0.05
+
+    // reduce the scale if the trunic rune row is too wide
+    trunic_row_pixel_width_with_padding := (trunic_to_display.width + 1) * trunic_scale
+    if trunic_row_pixel_width_with_padding > f32(rl.GetScreenWidth()) {
+        trunic_scale *= f32(rl.GetScreenWidth()) / trunic_row_pixel_width_with_padding
+    }
     
 }
 
@@ -88,13 +99,11 @@ Draw :: proc()
     rl.BeginDrawing()
     rl.ClearBackground({20, 15, 15, 255}) // set background to this
 
+
+
     for trunic_rune in trunic_to_display.trunic_rune_array {
-        DrawTrunicRune(trunic_rune, 100, trunic_to_display.width)
+        DrawTrunicRune(trunic_rune, trunic_scale, trunic_to_display.width)
     }
-
-
-
-
 
 
 
