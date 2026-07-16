@@ -14,25 +14,8 @@ RUNE_TOP_HEIGHT: f32 = 0.60
 RUNE_LINE_RADIUS: f32 = 0.05
 
 
-// what is in here is what will be rendered
+// contents of this variable is the trunic that will be drawn on the screen
 trunic_to_display: ^TrunicRuneRow
-
-
-
-test_trunic_rune1 := TrunicRune{
-    1,
-    'Z',
-    'M',
-    ' ',
-    false,
-}
-test_trunic_rune2 := TrunicRune{
-    2,
-    ' ',
-    ' ',
-    '!',
-    false,
-}
 
 
 

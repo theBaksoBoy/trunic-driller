@@ -7,7 +7,6 @@ add more symbols that it is able to render. Right now it can only render '.,!'
 make the scale when rendering trunic be first based on the width of the window, but also use the width element of the TrunicRuneRow to see if it fits or not, for when you have long sentences, where it then scales it down to ensure that it fits, with some slight padding to make the trunic not touch the edges.
 change mentions of "ipa" in main.odin as what you have are modified ipa strings with the help of the python program, so you should probably call it something else to avoid confusion. Also especially since it has punctuation and stuff, which ipa strings don't.
 
-- make renderer for trunic based on IPA characters or something, where the "font size" is easily adjustable. It should be able to support spaces, and different punctuation for sentences and hyphenated words.
 - make a menu with buttons you can press. Note that these should scale properly depending on the resolution of the window
 
 selections before starting the main part of the program:
