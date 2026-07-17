@@ -83,7 +83,6 @@ Update :: proc()
 {
     // figure out the scale that the trunic should be rendered in, depending on the window size
     trunic_scale = f32(rl.GetMonitorWidth(monitor)) * 0.05
-
     // reduce the scale if the trunic rune row is too wide
     trunic_row_pixel_width_with_padding := (trunic_to_display.width + 1) * trunic_scale
     if trunic_row_pixel_width_with_padding > f32(rl.GetScreenWidth()) {
@@ -114,7 +113,8 @@ Draw :: proc()
 
 DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
 {
-    pos: rl.Vector2 = {trunic_rune.x_position * scale, 500} + {f32(rl.GetScreenWidth())*0.5 - row_width*0.5 * scale, 0}
+    // position rune so that the row is centered horizontally, and positioned 1/3 from the top of the window vertically
+    pos: rl.Vector2 = {trunic_rune.x_position * scale + f32(rl.GetScreenWidth())*0.5 - row_width*0.5 * scale, f32(rl.GetScreenHeight())/3 - (RUNE_TOP_HEIGHT*2 + RUNE_MIDDLE_HEIGHT*2)*0.5 * scale}
 
     if trunic_rune.symbol != ' ' {
         switch (trunic_rune.symbol) {
