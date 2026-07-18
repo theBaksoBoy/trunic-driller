@@ -15,7 +15,6 @@ RUNE_LINE_RADIUS : f32 : 0.05
 
 // contents of this variable is the trunic that will be drawn on the screen
 trunic_to_display: ^TrunicRuneRow
-trunic_scale: f32
 normal_text_to_display: string
 
 odin_rounded_font_data := #load("odin-rounded.regular.otf")
@@ -72,7 +71,7 @@ main :: proc()
         ".otf",
         raw_data(odin_rounded_font_data),
         i32(len(odin_rounded_font_data)),
-        150,
+        256,
         nil,
         0)
 
@@ -94,13 +93,6 @@ main :: proc()
 
 Update :: proc()
 {
-    // figure out the scale that the trunic should be rendered in, depending on the window size
-    trunic_scale = f32(rl.GetMonitorWidth(monitor)) * 0.05
-    // reduce the scale if the trunic rune row is too wide
-    trunic_row_pixel_width_with_padding := (trunic_to_display.width + 1) * trunic_scale
-    if trunic_row_pixel_width_with_padding > f32(rl.GetScreenWidth()) {
-        trunic_scale *= f32(rl.GetScreenWidth()) / trunic_row_pixel_width_with_padding
-    }
     
 }
 
@@ -113,14 +105,35 @@ Draw :: proc()
 
 
 
+    // figure out the scale that the trunic should be rendered in, depending on the window size
+    trunic_scale := f32(rl.GetMonitorWidth(monitor)) * 0.05
+    // reduce the scale if the trunic rune row is too wide
+    trunic_row_pixel_width_with_padding := (trunic_to_display.width + 1) * trunic_scale
+    if trunic_row_pixel_width_with_padding > f32(rl.GetScreenWidth()) {
+        trunic_scale *= f32(rl.GetScreenWidth()) / trunic_row_pixel_width_with_padding
+    }
+
+    // draw the trunic
     for trunic_rune in trunic_to_display.trunic_rune_array {
         DrawTrunicRune(trunic_rune, trunic_scale, trunic_to_display.width)
     }
 
 
-    // TEST TEXT
-    dim := rl.MeasureTextEx(odin_rounded_font, cstring(raw_data(normal_text_to_display[:])), 50, 1)
-    rl.DrawTextEx(odin_rounded_font, cstring(raw_data(normal_text_to_display[:])), {f32(rl.GetScreenWidth())*0.5 - dim.x*0.5, 500}, 50, 1, {255, 255, 255, 255})
+    // base the normal text size off of the trunic scale.
+    // This should be fine as the text is drawn slimmer than the trunic,
+    // so even if the string is unusually wide compared to the trunic, it should still not exceed it
+    normal_text_size := i32(trunic_scale)
+
+    // draw the normal text
+    normal_text_to_display_as_cstring := cstring(raw_data(normal_text_to_display[:]))
+    normal_text_dimensions := rl.MeasureTextEx(odin_rounded_font, normal_text_to_display_as_cstring, trunic_scale, 1)
+    rl.DrawTextEx(
+        odin_rounded_font,
+        normal_text_to_display_as_cstring,
+        {f32(rl.GetScreenWidth())*0.5 - normal_text_dimensions.x*0.5, f32(rl.GetScreenHeight())/3 + (RUNE_TOP_HEIGHT*2 + RUNE_MIDDLE_HEIGHT*2) * trunic_scale},
+        trunic_scale,
+        1,
+        {255, 255, 255, 255})
 
     rl.EndDrawing()
 }

@@ -3,7 +3,6 @@
 work-in-progress project. This file will be used as a TODO list until the project matures more
 
 TODO:
-- remember to utilize the Odin Rounded font, as that is what is used in the game, and is kind of funny since you code it in Odin. Maybe you will have to make it a dependency in the repo or something though? Not sure how it works. Maybe you can just source it from the project files or embed it in the binary? If not then you should also definitely make it go for a more common font in a similar size if the font isn't found. Remember that you can ask the Odin discord how to do stuff like this, like embedding files into the binary
 
 - make a menu with buttons you can press. Note that these should scale properly depending on the resolution of the window
 
