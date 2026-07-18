@@ -77,7 +77,7 @@ main :: proc()
         0)
 
     // TESTING
-    test_trunic_string: string = "test striN..?! pFnis \'Bnzs\'."
+    test_trunic_string: string = "test striN..?! pFnis \'BnZs\'."
     trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
