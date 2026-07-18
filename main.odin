@@ -6,11 +6,11 @@ import "core:fmt"
 
 
 
-SPACE_WIDTH: f32 = 0.5
-RUNE_WIDTH: f32 = 1
-RUNE_MIDDLE_HEIGHT: f32 = 0.35
-RUNE_TOP_HEIGHT: f32 = 0.60
-RUNE_LINE_RADIUS: f32 = 0.05
+SPACE_WIDTH : f32 : 0.5
+RUNE_WIDTH : f32 : 1
+RUNE_MIDDLE_HEIGHT : f32 : 0.35
+RUNE_TOP_HEIGHT : f32 : 0.60
+RUNE_LINE_RADIUS : f32 : 0.05
 
 
 // contents of this variable is the trunic that will be drawn on the screen
