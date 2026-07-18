@@ -16,6 +16,10 @@ RUNE_LINE_RADIUS : f32 : 0.05
 // contents of this variable is the trunic that will be drawn on the screen
 trunic_to_display: ^TrunicRuneRow
 trunic_scale: f32
+normal_text_to_display: string
+
+odin_rounded_font_data := #load("odin-rounded.regular.otf")
+odin_rounded_font: rl.Font
 
 monitor: i32
 
@@ -64,11 +68,20 @@ main :: proc()
     rl.InitWindow(700, 700, "trunic driller")
     rl.SetTargetFPS(60)
 
+    odin_rounded_font = rl.LoadFontFromMemory(
+        ".otf",
+        raw_data(odin_rounded_font_data),
+        i32(len(odin_rounded_font_data)),
+        150,
+        nil,
+        0)
+
     // TESTING
     test_trunic_string: string = "test striN..?! pFnis \'Bnzs\'."
     trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
+    normal_text_to_display = "test string..?! penis \'anus\'."
 
     for !rl.WindowShouldClose() {
         Update()
@@ -105,6 +118,9 @@ Draw :: proc()
     }
 
 
+    // TEST TEXT
+    dim := rl.MeasureTextEx(odin_rounded_font, cstring(raw_data(normal_text_to_display[:])), 50, 1)
+    rl.DrawTextEx(odin_rounded_font, cstring(raw_data(normal_text_to_display[:])), {f32(rl.GetScreenWidth())*0.5 - dim.x*0.5, 500}, 50, 1, {255, 255, 255, 255})
 
     rl.EndDrawing()
 }
