@@ -83,11 +83,12 @@ main :: proc()
         0)
 
     // TESTING
-    test_trunic_string: string = most_common_words[20].trunic_string
+    i := GetRandomCommonWordIndex()
+    test_trunic_string: string = most_common_words[i].trunic_string
     trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
-    normal_text_to_display = most_common_words[20].normal_text
+    normal_text_to_display = most_common_words[i].normal_text
 
     for !rl.WindowShouldClose() {
         Update()

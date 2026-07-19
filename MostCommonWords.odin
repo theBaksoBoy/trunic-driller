@@ -1,6 +1,27 @@
 package main
 
+import "core:math/rand"
+
 // a list of the 100 most common English words, in order of most frequent to least frequent
+// these appear according to the distribution determined by Zipf's law.
+// The first item has a frequency weight of 1/1. The second one is 1/2. The third one is 1/3, etc.
+
+
+
+TOTAL_WEIGHT : f64 : 5.1873775176396206 // 1/1 + 1/2 + 1/3 + 1/4 + ... + 1/100
+
+
+
+GetRandomCommonWordIndex :: proc() -> int {
+    randomized_weight := rand.float64() * TOTAL_WEIGHT
+    for i in 0..<100 {
+        randomized_weight -= 1/f64(i+1)
+        if randomized_weight < 0 do return i
+    }
+    return 99
+}
+
+
 
 most_common_words: [100]StringSet = {
     {"the", "MZ"},
@@ -40,8 +61,8 @@ most_common_words: [100]StringSet = {
     {"one", "wZn"},
     {"all", "Gl"},
     {"would", "wLd"},
-    {"there", "Mer"},
-    {"their", "Mer"},
+    {"there", "ME"},
+    {"their", "ME"},
     {"what", "hwZt"},
     {"so", "so"},
     {"up", "Zp"},
@@ -65,7 +86,7 @@ most_common_words: [100]StringSet = {
     {"take", "tBk"},
     {"people", "pFpZl"},
     {"into", "intU"},
-    {"year", "jir"},
+    {"year", "jY"},
     {"your", "jR"},
     {"good", "gLd"},
     {"some", "sZm"},

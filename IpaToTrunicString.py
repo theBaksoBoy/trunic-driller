@@ -5,106 +5,9 @@
 
 # change the value of this string to change what the program outputs
 ipa_input: str = """
-    ðə
-    bi
-    tu
-    əv
-    ænd
-    eɪ
-    ɪn
-    ðæt
-    hæv
-    aɪ
-    ɪt
-    fɔɹ
-    nɑt
-    ɑn
-    wɪð
-    hi
-    æz
-    ju
-    du
-    æt
-    ðɪs
-    bət
-    hɪz
-    baɪ
-    fɹəm
-    ðeɪ
-    wi
-    seɪ
-    hɝ
-    ʃi
-    ɔɹ
-    æn
-    wɪɫ
-    maɪ
-    wən
-    ɔɫ
-    wʊd
-    ðɛɹ
-    ðɛɹ
-    hwət
-    soʊ
-    əp
-    aʊt
-    ɪf
-    əbaʊt
-    hu
-    ɡɛt
-    hwɪtʃ
-    ɡoʊ
-    mi
-    hwɛn
-    meɪk
-    kæn
-    ɫaɪk
-    taɪm
-    noʊ
-    dʒəst
-    hɪm
-    noʊ
-    teɪk
-    pipəɫ
-    ɪntu
-    jɪɹ
-    jɔɹ
-    ɡʊd
-    səm
-    kʊd
-    ðɛm
-    si
-    əðɝ
-    ðæn
-    ðɛn
-    naʊ
-    ɫʊk
-    oʊnɫi
-    kəm
-    ɪts
-    oʊvɝ
-    θɪŋk
-    ɔɫsoʊ
-    bæk
-    æftɝ
-    jus
-    tu
-    haʊ
-    aʊɝ
-    wɝk
-    fɝst
-    wɛɫ
-    weɪ
-    ivɪn
-    nju
-    wɑnt
-    bɪkɑz
-    ɛni
-    ðiz
-    ɡɪv
-    deɪ
-    moʊs
-    əs"""
+ðɛɹ
+ðɛɹ
+"""
 
 
 
@@ -141,11 +44,11 @@ while ipa_input != "":
             ipa_input = ipa_input[2:]
             output_string += "R"
             continue
-        if ipa_input[:2] == "ɪr":
+        if ipa_input[:2] == "ɪr" or ipa_input[:2] == "iɹ":
             ipa_input = ipa_input[2:]
             output_string += "Y"
             continue
-        if ipa_input[:2] == "ɛr":
+        if ipa_input[:2] == "ɛr" or ipa_input[:2] == "ɛɹ":
             ipa_input = ipa_input[2:]
             output_string += "E"
             continue
