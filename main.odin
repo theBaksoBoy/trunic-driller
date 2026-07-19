@@ -60,6 +60,13 @@ GetCharType :: proc(char: rune) -> CharType
 
 
 
+StringSet :: struct {
+    normal_text: string,
+    trunic_string: string,
+}
+
+
+
 main :: proc()
 {
     monitor = rl.GetCurrentMonitor()
@@ -76,11 +83,11 @@ main :: proc()
         0)
 
     // TESTING
-    test_trunic_string: string = "test striN..?! pFnis \'BnZs\'."
+    test_trunic_string: string = most_common_words[20].trunic_string
     trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
     defer delete(trunic_rune_row.trunic_rune_array)
     trunic_to_display = &trunic_rune_row
-    normal_text_to_display = "test string..?! penis \'anus\'."
+    normal_text_to_display = most_common_words[20].normal_text
 
     for !rl.WindowShouldClose() {
         Update()

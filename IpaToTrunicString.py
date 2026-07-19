@@ -4,7 +4,107 @@
 # with the characters being ASCII, making them more easily able to be parsed and stuff in Odin
 
 # change the value of this string to change what the program outputs
-ipa_input: str = "tɛst strɪŋ! ˈpiːnɪs ˈeɪnəs"
+ipa_input: str = """
+    ðə
+    bi
+    tu
+    əv
+    ænd
+    eɪ
+    ɪn
+    ðæt
+    hæv
+    aɪ
+    ɪt
+    fɔɹ
+    nɑt
+    ɑn
+    wɪð
+    hi
+    æz
+    ju
+    du
+    æt
+    ðɪs
+    bət
+    hɪz
+    baɪ
+    fɹəm
+    ðeɪ
+    wi
+    seɪ
+    hɝ
+    ʃi
+    ɔɹ
+    æn
+    wɪɫ
+    maɪ
+    wən
+    ɔɫ
+    wʊd
+    ðɛɹ
+    ðɛɹ
+    hwət
+    soʊ
+    əp
+    aʊt
+    ɪf
+    əbaʊt
+    hu
+    ɡɛt
+    hwɪtʃ
+    ɡoʊ
+    mi
+    hwɛn
+    meɪk
+    kæn
+    ɫaɪk
+    taɪm
+    noʊ
+    dʒəst
+    hɪm
+    noʊ
+    teɪk
+    pipəɫ
+    ɪntu
+    jɪɹ
+    jɔɹ
+    ɡʊd
+    səm
+    kʊd
+    ðɛm
+    si
+    əðɝ
+    ðæn
+    ðɛn
+    naʊ
+    ɫʊk
+    oʊnɫi
+    kəm
+    ɪts
+    oʊvɝ
+    θɪŋk
+    ɔɫsoʊ
+    bæk
+    æftɝ
+    jus
+    tu
+    haʊ
+    aʊɝ
+    wɝk
+    fɝst
+    wɛɫ
+    weɪ
+    ivɪn
+    nju
+    wɑnt
+    bɪkɑz
+    ɛni
+    ðiz
+    ɡɪv
+    deɪ
+    moʊs
+    əs"""
 
 
 
@@ -17,7 +117,7 @@ ipa_input = ipa_input.replace("ʌ", "ə")  # I think these are the same in truni
 while ipa_input != "":
 
     # include these symbols directly into the output
-    if ipa_input[0] in " .,!?-\"\'":
+    if ipa_input[0] in " .,!?-\"\'\n":
         output_string += ipa_input[0]
         ipa_input = ipa_input[1:]
         continue
@@ -37,7 +137,7 @@ while ipa_input != "":
             ipa_input = ipa_input[2:]
             output_string += "I"
             continue
-        if ipa_input[:2] == "ʊr":
+        if ipa_input[:2] == "ʊr" or ipa_input[:2] == "ɔɹ":
             ipa_input = ipa_input[2:]
             output_string += "R"
             continue
@@ -75,7 +175,7 @@ while ipa_input != "":
         ipa_input = ipa_input[1:]
         output_string += "a"
         continue
-    if ipa_input[0] == "ɑ":
+    if ipa_input[0] == "ɑ" or ipa_input[0] == "ɔ":
         ipa_input = ipa_input[1:]
         output_string += "G"
         continue
@@ -151,7 +251,7 @@ while ipa_input != "":
         ipa_input = ipa_input[1:]
         output_string += "f"
         continue
-    if ipa_input[0] == "g":
+    if ipa_input[0] == "g" or ipa_input[0] == "ɡ":
         ipa_input = ipa_input[1:]
         output_string += "g"
         continue
@@ -191,7 +291,7 @@ while ipa_input != "":
         ipa_input = ipa_input[1:]
         output_string += "M"
         continue
-    if ipa_input[0] == "l":
+    if ipa_input[0] == "l" or ipa_input[0] == "ɫ":
         ipa_input = ipa_input[1:]
         output_string += "l"
         continue
