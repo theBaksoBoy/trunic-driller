@@ -135,7 +135,7 @@ while ipa_input != "":
         ipa_input = ipa_input[1:]
         output_string += "s"
         continue
-    if ipa_input[0] == "r":
+    if ipa_input[0] == "r" or ipa_input[0] == "ɹ":
         ipa_input = ipa_input[1:]
         output_string += "r"
         continue
