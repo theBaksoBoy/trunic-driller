@@ -4,6 +4,7 @@ work-in-progress project. This file will be used as a TODO list until the projec
 
 TODO:
 
+- fix the python parsing of the text file. If your phrase uses "quotation marks", then the printed output should contain backslashes, so that it can be pasted as odin code directly, however despite using repr() it doesn't seem to print the backslashes.
 - make a menu with buttons you can press. Note that these should scale properly depending on the resolution of the window
 
 selections before starting the main part of the program:
@@ -34,4 +35,3 @@ V R Y E A Z i x W
 N H T S t w s r k
 p f g d n m z j v
 c   h M     y l b
-
