@@ -101,7 +101,37 @@ main :: proc()
 
 Update :: proc()
 {
+    monitor = rl.GetCurrentMonitor() // update in case the application switches monitor
     
+    // logic for when the left mouse button is pressed down
+    if rl.IsMouseButtonPressed(.LEFT) {
+        mouse_position: rl.Vector2 = rl.GetMousePosition()
+
+        // if pressing the word selection button
+        if IsPosInRect(mouse_position, word_selection_button.rect) {
+            IncrementButtonState(&word_selection_button)
+        }
+
+        // if pressing the practice type button
+        if IsPosInRect(mouse_position, practice_type_button.rect) {
+            IncrementButtonState(&practice_type_button)
+        }
+    }
+
+    // update the size of the buttons
+    UpdateButtonSize(&word_selection_button)
+    UpdateButtonSize(&practice_type_button)
+    UpdateButtonSize(&start_button)
+
+    // update the positions of the buttons
+    // the practice type button is in the vertical center, with the other buttons above and below it
+    practice_type_button.rect.y = (f32(rl.GetScreenHeight()) - practice_type_button.rect.height) * 0.5
+    word_selection_button.rect.y = practice_type_button.rect.y - word_selection_button.rect.height * 1.5
+    start_button.rect.y = practice_type_button.rect.y + practice_type_button.rect.height * 1.5
+    // center the buttons horizontally
+    word_selection_button.rect.x = (f32(rl.GetScreenWidth()) - word_selection_button.rect.width) * 0.5
+    practice_type_button.rect.x = (f32(rl.GetScreenWidth()) - practice_type_button.rect.width) * 0.5
+    start_button.rect.x = (f32(rl.GetScreenWidth()) - start_button.rect.width) * 0.5
 }
 
 
@@ -112,7 +142,11 @@ Draw :: proc()
     rl.ClearBackground({20, 15, 15, 255}) // set background to this
 
 
-
+    // draw buttons
+    DrawButton(&word_selection_button)
+    DrawButton(&practice_type_button)
+    DrawButton(&start_button)
+    
     // figure out the scale that the trunic should be rendered in, depending on the window size
     trunic_scale := f32(rl.GetMonitorWidth(monitor)) * 0.05
     // reduce the scale if the trunic rune row is too wide
@@ -455,4 +489,11 @@ TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
         trunic_rune_array,
         x_position
     }
+}
+
+
+
+IsPosInRect :: proc(pos: rl.Vector2, rect: rl.Rectangle) -> bool
+{
+    return pos.x > rect.x && pos.x < rect.x + rect.width && pos.y > rect.y && pos.y < rect.y + rect.height
 }
