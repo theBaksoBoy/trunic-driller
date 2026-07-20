@@ -221,6 +221,13 @@ def ConvertToTrunicString(ipa_input: str) -> str:
 
 
 
+def QuoteRepr(text: str) -> str:
+    text = text.replace("\"", "\\\"")
+    text = text.replace("\'", "\\\'")
+    return text
+
+
+
 # parse input file
 with open("input_to_stirng_set.txt") as f:
     lines = f.readlines()
@@ -246,4 +253,4 @@ if len(normal_text) != len(ipa_text):
 
 # turn every item into the correct syntax for the odin arrays
 for i in range(len(normal_text)):
-    print("    {\"" + repr(normal_text[i])[1:-1] + "\", \"" + repr(ConvertToTrunicString(ipa_text[i]))[1:-1] + "\"},")
+    print("    {\"" + QuoteRepr(normal_text[i]) + "\", \"" + QuoteRepr(ConvertToTrunicString(ipa_text[i])) + "\"},")
