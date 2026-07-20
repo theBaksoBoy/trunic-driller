@@ -31,6 +31,13 @@ start_button := Button{
     0,
 }
 
+proceed_button := Button{
+    {"   reveal   ", "    next    "},
+    {},
+    0,
+    {0, 0, 0, 0},
+    0,
+}
 
 
 Button :: struct {

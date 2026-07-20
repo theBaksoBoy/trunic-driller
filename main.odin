@@ -13,6 +13,11 @@ RUNE_TOP_HEIGHT : f32 : 0.60
 RUNE_LINE_RADIUS : f32 : 0.05
 
 
+program_state := ProgramState.MENU
+word_selection: ButtonStates
+practice_type: ButtonStates
+is_in_reading_mode: bool = false // when the practice type is both, this variable keeps track of which mode it is currently in
+
 // contents of this variable is the trunic that will be drawn on the screen
 trunic_to_display: ^TrunicRuneRow
 normal_text_to_display: string
@@ -21,6 +26,16 @@ odin_rounded_font_data := #load("odin-rounded.regular.otf")
 odin_rounded_font: rl.Font
 
 monitor: i32
+
+
+
+ProgramState :: enum {
+    MENU, // the start menu when you launch the program
+    QUESTION, // the state where it only shows either the trunic or the normal text
+    ANSWER, // the state where it shows both the trunic and the normal text
+}
+
+
 
 
 TrunicRune :: struct {
@@ -107,31 +122,46 @@ Update :: proc()
     if rl.IsMouseButtonPressed(.LEFT) {
         mouse_position: rl.Vector2 = rl.GetMousePosition()
 
-        // if pressing the word selection button
-        if IsPosInRect(mouse_position, word_selection_button.rect) {
+        // logic when pressing the different buttons
+        if IsPosInRect(mouse_position, word_selection_button.rect) && program_state == .MENU {
             IncrementButtonState(&word_selection_button)
         }
-
-        // if pressing the practice type button
-        if IsPosInRect(mouse_position, practice_type_button.rect) {
+        if IsPosInRect(mouse_position, practice_type_button.rect) && program_state == .MENU {
             IncrementButtonState(&practice_type_button)
         }
+        if IsPosInRect(mouse_position, start_button.rect) && program_state == .MENU {
+            program_state = .QUESTION
+            word_selection = word_selection_button.states[word_selection_button.state_index]
+            practice_type = practice_type_button.states[practice_type_button.state_index]
+        }
+        if IsPosInRect(mouse_position, proceed_button.rect) && program_state != .MENU {
+            ToggleProgramState()
+        }
+    }
+
+    // make space and enter also possible to use for proceeding
+    if rl.IsKeyPressed(.SPACE) || rl.IsKeyPressed(.ENTER) {
+        if program_state != .MENU do ToggleProgramState()
     }
 
     // update the size of the buttons
     UpdateButtonSize(&word_selection_button)
     UpdateButtonSize(&practice_type_button)
     UpdateButtonSize(&start_button)
+    UpdateButtonSize(&proceed_button)
 
     // update the positions of the buttons
-    // the practice type button is in the vertical center, with the other buttons above and below it
-    practice_type_button.rect.y = (f32(rl.GetScreenHeight()) - practice_type_button.rect.height) * 0.5
-    word_selection_button.rect.y = practice_type_button.rect.y - word_selection_button.rect.height * 1.5
-    start_button.rect.y = practice_type_button.rect.y + practice_type_button.rect.height * 1.5
     // center the buttons horizontally
     word_selection_button.rect.x = (f32(rl.GetScreenWidth()) - word_selection_button.rect.width) * 0.5
     practice_type_button.rect.x = (f32(rl.GetScreenWidth()) - practice_type_button.rect.width) * 0.5
     start_button.rect.x = (f32(rl.GetScreenWidth()) - start_button.rect.width) * 0.5
+    // the practice type button is in the vertical center, with the other buttons above and below it
+    practice_type_button.rect.y = (f32(rl.GetScreenHeight()) - practice_type_button.rect.height) * 0.5
+    word_selection_button.rect.y = practice_type_button.rect.y - word_selection_button.rect.height * 1.5
+    start_button.rect.y = practice_type_button.rect.y + practice_type_button.rect.height * 1.5
+    // position the proceed button. This is positioned at the bottom of the screen
+    proceed_button.rect.x = (f32(rl.GetScreenWidth()) - proceed_button.rect.width) * 0.5
+    proceed_button.rect.y = (f32(rl.GetScreenHeight()) - proceed_button.rect.height * 1.5)
 }
 
 
@@ -143,9 +173,13 @@ Draw :: proc()
 
 
     // draw buttons
-    DrawButton(&word_selection_button)
-    DrawButton(&practice_type_button)
-    DrawButton(&start_button)
+    if program_state == .MENU {
+        DrawButton(&word_selection_button)
+        DrawButton(&practice_type_button)
+        DrawButton(&start_button)
+    } else {
+        DrawButton(&proceed_button)
+    }
     
     // figure out the scale that the trunic should be rendered in, depending on the window size
     trunic_scale := f32(rl.GetMonitorWidth(monitor)) * 0.05
@@ -156,8 +190,10 @@ Draw :: proc()
     }
 
     // draw the trunic
-    for trunic_rune in trunic_to_display.trunic_rune_array {
-        DrawTrunicRune(trunic_rune, trunic_scale, trunic_to_display.width)
+    if IsTrunicVisible() {
+        for trunic_rune in trunic_to_display.trunic_rune_array {
+            DrawTrunicRune(trunic_rune, trunic_scale, trunic_to_display.width)
+        }
     }
 
 
@@ -167,15 +203,17 @@ Draw :: proc()
     normal_text_size := i32(trunic_scale)
 
     // draw the normal text
-    normal_text_to_display_as_cstring := cstring(raw_data(normal_text_to_display[:]))
-    normal_text_dimensions := rl.MeasureTextEx(odin_rounded_font, normal_text_to_display_as_cstring, trunic_scale, 1)
-    rl.DrawTextEx(
-        odin_rounded_font,
-        normal_text_to_display_as_cstring,
-        {f32(rl.GetScreenWidth())*0.5 - normal_text_dimensions.x*0.5, f32(rl.GetScreenHeight())/3 + (RUNE_TOP_HEIGHT*2 + RUNE_MIDDLE_HEIGHT*2) * trunic_scale},
-        trunic_scale,
-        1,
-        {255, 255, 255, 255})
+    if IsNormalTextVisible() {
+        normal_text_to_display_as_cstring := cstring(raw_data(normal_text_to_display[:]))
+        normal_text_dimensions := rl.MeasureTextEx(odin_rounded_font, normal_text_to_display_as_cstring, trunic_scale, 1)
+        rl.DrawTextEx(
+            odin_rounded_font,
+            normal_text_to_display_as_cstring,
+            {f32(rl.GetScreenWidth())*0.5 - normal_text_dimensions.x*0.5, f32(rl.GetScreenHeight())/3 + (RUNE_TOP_HEIGHT*2 + RUNE_MIDDLE_HEIGHT*2) * trunic_scale},
+            trunic_scale,
+            1,
+            {255, 255, 255, 255})
+    }
 
     rl.EndDrawing()
 }
@@ -496,4 +534,42 @@ TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
 IsPosInRect :: proc(pos: rl.Vector2, rect: rl.Rectangle) -> bool
 {
     return pos.x > rect.x && pos.x < rect.x + rect.width && pos.y > rect.y && pos.y < rect.y + rect.height
+}
+
+
+
+ToggleProgramState :: proc()
+{
+    if program_state == .QUESTION do program_state = .ANSWER
+    else do program_state = .QUESTION
+
+    if program_state == .QUESTION {
+        proceed_button.state_index = 0
+    } else {
+        proceed_button.state_index = 1
+    }
+
+    if program_state == .QUESTION && practice_type == .PRACTICE_BOTH do is_in_reading_mode = !is_in_reading_mode
+}
+
+
+
+IsNormalTextVisible :: proc() -> bool
+{
+    if program_state == .ANSWER do return true
+    if program_state == .QUESTION && practice_type == .PRACTICE_WRITING do return true
+    if program_state == .QUESTION && practice_type == .PRACTICE_BOTH && !is_in_reading_mode do return true
+
+    return false
+}
+
+
+
+IsTrunicVisible :: proc() -> bool
+{
+    if program_state == .ANSWER do return true
+    if program_state == .QUESTION && practice_type == .PRACTICE_READING do return true
+    if program_state == .QUESTION && practice_type == .PRACTICE_BOTH && is_in_reading_mode do return true
+
+    return false
 }
