@@ -19,7 +19,7 @@ practice_type: ButtonStates
 is_in_reading_mode: bool = false // when the practice type is both, this variable keeps track of which mode it is currently in
 
 // contents of this variable is the trunic that will be drawn on the screen
-trunic_to_display: ^TrunicRuneRow
+trunic_to_display: TrunicRuneRow
 normal_text_to_display: string
 
 odin_rounded_font_data := #load("odin-rounded.regular.otf")
@@ -98,7 +98,6 @@ main :: proc()
         0)
 
     GenerateNewPhrase()
-    fmt.println(trunic_to_display) // prints the following: &TrunicRuneRow{trunic_rune_array = [TrunicRune{x_position = 3.3056658e+24, vowel = , consonant = , symbol = , vowel_first = true}], width = 6.043343e-39}
 
     for !rl.WindowShouldClose() {
         Update()
@@ -449,7 +448,7 @@ DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
 
 
 
-TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
+AssignTrunicStringToTrunicRuneRow :: proc(trunic_string: string)
 {
     trunic_rune_array := make([dynamic]TrunicRune)
     x_position: f32 = 0
@@ -518,7 +517,7 @@ TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
         }
     }
 
-    return TrunicRuneRow{
+    trunic_to_display = TrunicRuneRow{
         trunic_rune_array,
         x_position,
     }
@@ -578,18 +577,12 @@ IsTrunicVisible :: proc() -> bool
 
 GenerateNewPhrase :: proc()
 {
-    // delete data from current item
-    // make data of new item and assign it
-    // use the thing to detect memory leaks as you could easily make a mistake here
-    // remember that you need to initialize redundant data so that it can delete it here without getting memory error thing
-    //
-    // OLD CODE
+    // delete old data
+    delete(trunic_to_display.trunic_rune_array)
+    
+    // get the string to use and assign it to the normal text and make a trunic row of it
     i := GetRandomCommonWordIndex()
     test_trunic_string: string = most_common_words[i].trunic_string
-    trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
-    //defer delete(trunic_rune_row.trunic_rune_array)
-    trunic_to_display = &trunic_rune_row
+    AssignTrunicStringToTrunicRuneRow(test_trunic_string)
     normal_text_to_display = most_common_words[i].normal_text
-
-    fmt.println(trunic_to_display) // prints the following: &TrunicRuneRow{trunic_rune_array = [TrunicRune{x_position = 0, vowel = B, consonant =  , symbol =  , vowel_first = false}], width = 1}
 }
