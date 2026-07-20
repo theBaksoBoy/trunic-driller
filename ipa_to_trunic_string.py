@@ -222,7 +222,7 @@ def ConvertToTrunicString(ipa_input: str) -> str:
 
 
 # parse input file
-with open("InputToStirngSet.txt") as f:
+with open("input_to_stirng_set.txt") as f:
     lines = f.readlines()
 
 while lines[-1].strip() == "":
