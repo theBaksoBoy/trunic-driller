@@ -97,13 +97,8 @@ main :: proc()
         nil,
         0)
 
-    // TESTING
-    i := GetRandomCommonWordIndex()
-    test_trunic_string: string = most_common_words[i].trunic_string
-    trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
-    defer delete(trunic_rune_row.trunic_rune_array)
-    trunic_to_display = &trunic_rune_row
-    normal_text_to_display = most_common_words[i].normal_text
+    GenerateNewPhrase()
+    fmt.println(trunic_to_display) // prints the following: &TrunicRuneRow{trunic_rune_array = [TrunicRune{x_position = 3.3056658e+24, vowel = , consonant = , symbol = , vowel_first = true}], width = 6.043343e-39}
 
     for !rl.WindowShouldClose() {
         Update()
@@ -525,7 +520,7 @@ TrunicStringToTrunicRuneRow :: proc(trunic_string: string) -> TrunicRuneRow
 
     return TrunicRuneRow{
         trunic_rune_array,
-        x_position
+        x_position,
     }
 }
 
@@ -550,6 +545,11 @@ ToggleProgramState :: proc()
     }
 
     if program_state == .QUESTION && practice_type == .PRACTICE_BOTH do is_in_reading_mode = !is_in_reading_mode
+
+    // change the trunic and normal text string when going to the next item
+    if program_state == .QUESTION {
+        GenerateNewPhrase()
+    }
 }
 
 
@@ -572,4 +572,24 @@ IsTrunicVisible :: proc() -> bool
     if program_state == .QUESTION && practice_type == .PRACTICE_BOTH && is_in_reading_mode do return true
 
     return false
+}
+
+
+
+GenerateNewPhrase :: proc()
+{
+    // delete data from current item
+    // make data of new item and assign it
+    // use the thing to detect memory leaks as you could easily make a mistake here
+    // remember that you need to initialize redundant data so that it can delete it here without getting memory error thing
+    //
+    // OLD CODE
+    i := GetRandomCommonWordIndex()
+    test_trunic_string: string = most_common_words[i].trunic_string
+    trunic_rune_row := TrunicStringToTrunicRuneRow(test_trunic_string)
+    //defer delete(trunic_rune_row.trunic_rune_array)
+    trunic_to_display = &trunic_rune_row
+    normal_text_to_display = most_common_words[i].normal_text
+
+    fmt.println(trunic_to_display) // prints the following: &TrunicRuneRow{trunic_rune_array = [TrunicRune{x_position = 0, vowel = B, consonant =  , symbol =  , vowel_first = false}], width = 1}
 }
