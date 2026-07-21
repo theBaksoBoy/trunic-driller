@@ -194,17 +194,17 @@ Draw :: proc()
     // base the normal text size off of the trunic scale.
     // This should be fine as the text is drawn slimmer than the trunic,
     // so even if the string is unusually wide compared to the trunic, it should still not exceed it
-    normal_text_size := i32(trunic_scale)
+    normal_text_size := trunic_scale * 1.3
 
     // draw the normal text
     if IsNormalTextVisible() {
         normal_text_to_display_as_cstring := cstring(raw_data(normal_text_to_display[:]))
-        normal_text_dimensions := rl.MeasureTextEx(odin_rounded_font, normal_text_to_display_as_cstring, trunic_scale, 1)
+        normal_text_dimensions := rl.MeasureTextEx(odin_rounded_font, normal_text_to_display_as_cstring, normal_text_size, 1)
         rl.DrawTextEx(
             odin_rounded_font,
             normal_text_to_display_as_cstring,
             {f32(rl.GetScreenWidth())*0.5 - normal_text_dimensions.x*0.5, f32(rl.GetScreenHeight())/3 + (RUNE_TOP_HEIGHT*2 + RUNE_MIDDLE_HEIGHT*2) * trunic_scale},
-            trunic_scale,
+            normal_text_size,
             1,
             {255, 255, 255, 255})
     }
@@ -582,7 +582,9 @@ GenerateNewPhrase :: proc()
     
     // get the string to use and assign it to the normal text and make a trunic row of it
     i := GetRandomCommonWordIndex()
-    test_trunic_string: string = most_common_words[i].trunic_string
+    //test_trunic_string: string = most_common_words[i].trunic_string
+    test_trunic_string: string = sentence_collection[0].trunic_string
     AssignTrunicStringToTrunicRuneRow(test_trunic_string)
-    normal_text_to_display = most_common_words[i].normal_text
+    //normal_text_to_display = most_common_words[i].normal_text
+    normal_text_to_display = sentence_collection[0].normal_text
 }
