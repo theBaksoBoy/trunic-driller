@@ -32,7 +32,7 @@ def ConvertToTrunicString(ipa_input: str) -> str:
     while ipa_input != "":
 
         # include these symbols directly into the output
-        if ipa_input[0] in " .,!?-\"\'\n":
+        if ipa_input[0] in " .,!?-\"\'":
             output_string += ipa_input[0]
             ipa_input = ipa_input[1:]
             continue
