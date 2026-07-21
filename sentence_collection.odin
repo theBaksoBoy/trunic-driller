@@ -14,7 +14,7 @@ sentence_collection: []StringSet = {
     {"THERE IS BLOOD IN THE BOX!", "ME iz blZd in MZ bGks!"},
     {"If I put you in a meatgrinder...", "if I pLt jU in B ..."},
     {"I hope that my unhinged sentences get drowned out by better ones", "I hop Mat mI Znhinyd sentZnsZz get drWnd Wt bI betV wZnz"},
-    {"Vintage Story is an amazing game. You should go play it!", "vintiy stRF iz an ZmBziN gBm. jU SLd go plB it!"},
+    {"Vintage Story is a great game. You should go play it!", "vintiy stRF iz B grBt gBm. jU SLd go plB it!"},
     {"Odin is an amazing programming language. You should use it!", "odZn iz an ZmBziN programiN laNgwZy. jU SLd jUs it!"},
-    {"Linux is an amazing operating system. You should use it!", "linZks iz an ZmBziN GpVBtiN sistZm. jU SLd jUs it!"},
+    {"Linux is an awesome operating system. You should try it!", "linZks iz an GsZm GpVBtiN sistZm. jU SLd trI it!"},
 }
