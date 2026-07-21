@@ -4,8 +4,7 @@ work-in-progress project. This file will be used as a TODO list until the projec
 
 TODO:
 
-- make the button that selects the collection of strings do something
-- make it so that when randomizing the index for what string to display, that if the randomized index is the same as the old one, it randomizes again, until it becomes different.
+- make the button that selects the collection of strings do something. make it so that when randomizing the index for what string to display, that if the randomized index is the same as the old one, it randomizes again, until it becomes different.
 - when compiling for windows, see how you would assign an icon to the executable. Also obviously go through the effort of finding out how to actually compile for it. Maybe also see if odin can be compiled to mac??? idk
 
 mention to Finji Discord that you are making this and that you want sentence lists to use in the program! Say to structure it like the code-block you have a bit further down. Make sure to give some guidelines like allowed symbols, to use proper punctuation and capitalization, recommended max sentence length, to use normal words so that the IPA translator works, and also say that the more sentences they make the better! You should also give some example sentences so they have an idea what they can be of (they can be both TUNIC related or just completely random sentences. They can be goofy, they can be serious) Also tell them that you are going to make a video about the project later which you will then link in the discord (assuming that it is allowed at least)

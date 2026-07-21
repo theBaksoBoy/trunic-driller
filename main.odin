@@ -22,8 +22,15 @@ is_in_reading_mode: bool = false // when the practice type is both, this variabl
 trunic_to_display: TrunicRuneRow
 normal_text_to_display: string
 
-odin_rounded_font_data := #load("odin-rounded.regular.otf")
+ODIN_ROUNDED_FONT_DATA :: #load("odin-rounded.regular.otf")
 odin_rounded_font: rl.Font
+
+SELECT_WAVE_DATA :: #load("sounds/TUNIC_UI_move.wav")
+select_sound: rl.Sound
+NEW_PHRASE_WAVE_DATA :: #load("sounds/TUNIC_UI_select.wav")
+new_phrase_sound: rl.Sound
+START_WAVE_DATA :: #load("sounds/TUNIC_UI_options_enter.wav")
+start_sound: rl.Sound
 
 monitor: i32
 
@@ -84,18 +91,24 @@ StringSet :: struct {
 
 main :: proc()
 {
-    monitor = rl.GetCurrentMonitor()
     rl.SetConfigFlags({.WINDOW_RESIZABLE})
     rl.InitWindow(700, 700, "trunic driller")
     rl.SetTargetFPS(60)
+    rl.InitAudioDevice()
 
+    // load font
     odin_rounded_font = rl.LoadFontFromMemory(
         ".otf",
-        raw_data(odin_rounded_font_data),
-        i32(len(odin_rounded_font_data)),
+        raw_data(ODIN_ROUNDED_FONT_DATA),
+        i32(len(ODIN_ROUNDED_FONT_DATA)),
         256,
         nil,
         0)
+
+    // load sounds
+    select_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(SELECT_WAVE_DATA), 25544))
+    new_phrase_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(NEW_PHRASE_WAVE_DATA), 41208))
+    start_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(START_WAVE_DATA), 939672))
 
     GenerateNewPhrase()
 
@@ -117,17 +130,24 @@ Update :: proc()
         mouse_position: rl.Vector2 = rl.GetMousePosition()
 
         // logic when pressing the different buttons
+        // word selection button
         if IsPosInRect(mouse_position, word_selection_button.rect) && program_state == .MENU {
             IncrementButtonState(&word_selection_button)
+            rl.PlaySound(select_sound)
         }
+        // practice type button
         if IsPosInRect(mouse_position, practice_type_button.rect) && program_state == .MENU {
             IncrementButtonState(&practice_type_button)
+            rl.PlaySound(select_sound)
         }
+        // start button
         if IsPosInRect(mouse_position, start_button.rect) && program_state == .MENU {
             program_state = .QUESTION
             word_selection = word_selection_button.states[word_selection_button.state_index]
             practice_type = practice_type_button.states[practice_type_button.state_index]
+            rl.PlaySound(start_sound)
         }
+        // proceed button
         if IsPosInRect(mouse_position, proceed_button.rect) && program_state != .MENU {
             ToggleProgramState()
         }
@@ -539,8 +559,10 @@ ToggleProgramState :: proc()
 
     if program_state == .QUESTION {
         proceed_button.state_index = 0
+        rl.PlaySound(new_phrase_sound)
     } else {
         proceed_button.state_index = 1
+        rl.PlaySound(select_sound)
     }
 
     if program_state == .QUESTION && practice_type == .PRACTICE_BOTH do is_in_reading_mode = !is_in_reading_mode
