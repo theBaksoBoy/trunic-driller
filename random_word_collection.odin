@@ -1,5 +1,13 @@
 package main
 
+import "core:math/rand"
+
+
+
+GetRandomWordIndex :: proc() -> int {
+    return rand.int_range(0, len(random_word_collection))
+}
+
 
 
 random_word_collection: []StringSet = {

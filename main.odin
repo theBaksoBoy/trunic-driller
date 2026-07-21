@@ -22,6 +22,8 @@ is_in_reading_mode: bool = false // when the practice type is both, this variabl
 trunic_to_display: TrunicRuneRow
 normal_text_to_display: string
 
+last_generated_phrase_index: int = -1
+
 ODIN_ROUNDED_FONT_DATA :: #load("odin-rounded.regular.otf")
 odin_rounded_font: rl.Font
 
@@ -110,8 +112,6 @@ main :: proc()
     new_phrase_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(NEW_PHRASE_WAVE_DATA), 41208))
     start_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(START_WAVE_DATA), 939672))
 
-    GenerateNewPhrase()
-
     for !rl.WindowShouldClose() {
         Update()
         Draw()
@@ -145,6 +145,7 @@ Update :: proc()
             program_state = .QUESTION
             word_selection = word_selection_button.states[word_selection_button.state_index]
             practice_type = practice_type_button.states[practice_type_button.state_index]
+            GenerateNewPhrase()
             rl.PlaySound(start_sound)
         }
         // proceed button
@@ -597,16 +598,76 @@ IsTrunicVisible :: proc() -> bool
 
 
 
+GetNewPhraseIndex :: proc() -> int
+{
+    // randomize the phrase to pick, making sure that it doesn't pick the one that was just puck (done 100 times max, in case something breaks)
+    i: int
+    for _ in 0..<100 {
+
+        if word_selection == .WORDS_COMMON_WORDS || word_selection == .WORDS_COMMON_WORDS_CLUSTER do i = GetRandomCommonWordIndex()
+        else if word_selection == .WORDS_RANDOM_WORDS || word_selection == .WORDS_RANDOM_WORDS_CLUSTER do i = GetRandomWordIndex()
+        else if word_selection == .WORDS_SENTENCES do i = GetRandomSentenceIndex()
+
+        if i != last_generated_phrase_index do break
+    }
+    last_generated_phrase_index = i
+    return i
+}
+
 GenerateNewPhrase :: proc()
 {
     // delete old data
     delete(trunic_to_display.trunic_rune_array)
     
-    // get the string to use and assign it to the normal text and make a trunic row of it
-    i := GetRandomCommonWordIndex()
-    //test_trunic_string: string = most_common_words[i].trunic_string
-    test_trunic_string: string = sentence_collection[0].trunic_string
-    AssignTrunicStringToTrunicRuneRow(test_trunic_string)
-    //normal_text_to_display = most_common_words[i].normal_text
-    normal_text_to_display = sentence_collection[0].normal_text
+    i := GetNewPhraseIndex()
+
+    string_set: StringSet
+
+    if word_selection == .WORDS_COMMON_WORDS {
+        string_set = most_common_words[i]  
+
+        AssignTrunicStringToTrunicRuneRow(string_set.trunic_string)
+        normal_text_to_display = string_set.normal_text
+    } 
+    else if word_selection == .WORDS_COMMON_WORDS_CLUSTER {
+        string_set = most_common_words[i]
+        i = GetNewPhraseIndex()
+        string_set2 := most_common_words[i]
+        i = GetNewPhraseIndex()
+        string_set3 := most_common_words[i]
+        i = GetNewPhraseIndex()
+        string_set4 := most_common_words[i]
+        i = GetNewPhraseIndex()
+        string_set5 := most_common_words[i]
+
+        AssignTrunicStringToTrunicRuneRow(fmt.tprintf("%s %s %s %s %s", string_set.trunic_string, string_set2.trunic_string, string_set3.trunic_string, string_set4.trunic_string, string_set5.trunic_string))
+        normal_text_to_display = fmt.tprintf("%s %s %s %s %s", string_set.normal_text, string_set2.normal_text, string_set3.normal_text, string_set4.normal_text, string_set5.normal_text)
+    }
+    else if word_selection == .WORDS_RANDOM_WORDS {
+        string_set = random_word_collection[i]
+
+        AssignTrunicStringToTrunicRuneRow(string_set.trunic_string)
+        normal_text_to_display = string_set.normal_text
+    }
+    else if word_selection == .WORDS_RANDOM_WORDS_CLUSTER {
+        string_set = random_word_collection[i]
+        i = GetNewPhraseIndex()
+        string_set2 := random_word_collection[i]
+        i = GetNewPhraseIndex()
+        string_set3 := random_word_collection[i]
+        i = GetNewPhraseIndex()
+        string_set4 := random_word_collection[i]
+        i = GetNewPhraseIndex()
+        string_set5 := random_word_collection[i]
+
+        AssignTrunicStringToTrunicRuneRow(fmt.tprintf("%s %s %s %s %s", string_set.trunic_string, string_set2.trunic_string, string_set3.trunic_string, string_set4.trunic_string, string_set5.trunic_string))
+        normal_text_to_display = fmt.tprintf("%s %s %s %s %s", string_set.normal_text, string_set2.normal_text, string_set3.normal_text, string_set4.normal_text, string_set5.normal_text)
+    }
+    else if word_selection == .WORDS_SENTENCES {
+        string_set = sentence_collection[i]
+
+        AssignTrunicStringToTrunicRuneRow(string_set.trunic_string)
+        normal_text_to_display = string_set.normal_text
+    }
+    
 }

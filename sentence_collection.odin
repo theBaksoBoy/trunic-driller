@@ -1,5 +1,13 @@
 package main
 
+import "core:math/rand"
+
+
+
+GetRandomSentenceIndex :: proc() -> int {
+    return rand.int_range(0, len(sentence_collection))
+}
+
 
 
 sentence_collection: []StringSet = {
@@ -18,7 +26,7 @@ sentence_collection: []StringSet = {
     {"\"Giving aliens edibles is an act of war\"", "\"giviN BlFZnz edZbZlz iz an akt Zv wR\""},
     {"When in doubt, radish it out!", "hwen in dWt, radiS it Wt!"},
     {"THERE IS BLOOD IN THE BOX!", "ME iz blZd in MZ bGks!"},
-    {"If I put you in a meatgrinder...", "if I pLt jU in B ..."},
+    {"If I put you in a meatgrinder...", "if I pLt jU in B..."},
 
     // by: big papa (idk man)
     {"My left foot is shaped like a United States state.", "mI left fLt iz SBpt lIk B jUnItid stBts stBt."},
@@ -45,4 +53,5 @@ sentence_collection: []StringSet = {
     {"You really don\'t need any other drink than water.", "jU rFlF don nFd enF ZMV driNk Man wGtV."},
     {"If I lived in a room without windows I think I would crumble to dust.", "if I lIvd in B rUm wiMWt windoz I TiNk I wLd krZmbZl tU dZst."},
     {"Sometimes I wonder if the crazy frog really was that crazy after all.", "sZmtImz I wZndV if MZ krBzF frGg rFlF wGz Mat krBzF aftV Gl."},
+    {"Time waits for no one.", "tIm wBts fR no wZn."},
 }
