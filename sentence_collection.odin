@@ -26,7 +26,7 @@ sentence_collection: []StringSet = {
     {"\"Giving aliens edibles is an act of war\"", "\"giviN BlFZnz edZbZlz iz an akt Zv wR\""},
     {"When in doubt, radish it out!", "hwen in dWt, radiS it Wt!"},
     {"THERE IS BLOOD IN THE BOX!", "ME iz blZd in MZ bGks!"},
-    {"If I put you in a meatgrinder...", "if I pLt jU in B..."},
+    {"If I put you in a meat grinder...", "if I pLt jU in B mFt grIndV..."},
 
     // by: big papa (idk man)
     {"My left foot is shaped like a United States state.", "mI left fLt iz SBpt lIk B jUnItid stBts stBt."},
