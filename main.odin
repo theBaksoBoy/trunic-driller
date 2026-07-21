@@ -212,10 +212,13 @@ Draw :: proc()
     }
 
 
-    // base the normal text size off of the trunic scale.
-    // This should be fine as the text is drawn slimmer than the trunic,
-    // so even if the string is unusually wide compared to the trunic, it should still not exceed it
-    normal_text_size := trunic_scale * 1.3
+    // figure out the scale that the normal text should be rendered in, depending on the window size
+    normal_text_size := f32(rl.GetMonitorWidth(monitor)) * 0.05
+    // reduce the scale if the text is too wide
+    text_pixel_width_with_padding := rl.MeasureTextEx(odin_rounded_font, cstring(raw_data(fmt.tprintf("  %s  ",normal_text_to_display)[:])), normal_text_size, 1).x
+    if text_pixel_width_with_padding > f32(rl.GetScreenWidth()) {
+        normal_text_size *= f32(rl.GetScreenWidth()) / text_pixel_width_with_padding
+    }
 
     // draw the normal text
     if IsNormalTextVisible() {

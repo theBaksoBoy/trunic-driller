@@ -4,8 +4,7 @@ work-in-progress project. This file will be used as a TODO list until the projec
 
 TODO:
 
-- definitely make the normal text sizing be dependant on how big the text is. It does actually sometimes go past the borders, even with a multiplier of 1 in some scenarios.
-- create the drawing logic. Maybe do it where you can just draw straight lines? Also make an eraser tool! Just doing straight lines simplifies the logic a lot
+- create the drawing logic. Maybe do it where you can just draw straight lines? Also make an eraser tool! Just doing straight lines simplifies the logic a lot. Also add undo logic
 - when compiling for windows, see how you would assign an icon to the executable. A fun idea could be to try to immitate how items look in the game, and make a drill item. Also obviously go through the effort of finding out how to actually compile for it. Maybe also see if odin can be compiled to mac??? idk
 - Make a Reddit post about the project. Title it something like "I'm making a program for practicing trunic reading and writing speed, and I need help with making random sentences for the program to use!", where you in the description link to the repo and explain how the sentences should be and stuff. Note both for here and for the future, that when you say how long a sentence can be at max, it doesn't mean that sentences HAVE to be that long. Having short sentences is also very good, so that you don't just get long ones all the time when using the program
 
