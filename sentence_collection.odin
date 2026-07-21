@@ -6,7 +6,7 @@ sentence_collection: []StringSet = {
     {"This is a test string to test realistic lengths of sentences.", "Mis iz B test striN tU test rFZlistik leNkTs Zv sentZnsZz."},
     {"No ruin seeker! Don\'t take the last slice of pizza! It\'s mine!", "no rUZn sFkV! don tBk MZ las slIs Zv pFtsZ! its mIn!"},
     {"I hope this program is helping to improve your reading speed.", "I hop Mis program iz helpiN tU imprUv jR rediN spFd."},
-    {"I\'m Just four sentences in and my brain is already struggling...", "Im yZst fR sentZnsZz in and mI brBn iz RedF strZgZliN..."},
+    {"I\'m just four sentences in and my brain is already struggling...", "Im yZst fR sentZnsZz in and mI brBn iz RedF strZgZliN..."},
     {"Astigmatism makes it harder to drive.", "ZstigmZtizZm mBks it hGrdV tU drIv."},
     {"Oh mama mia, Luigi is drunk again!", "o mGmZ mFZ, lUFyF iz drZNk ZgBn!"},
     {"\"Giving aliens edibles is an act of war\"", "\"giviN BlFZnz edZbZlz iz an akt Zv wR\""},
