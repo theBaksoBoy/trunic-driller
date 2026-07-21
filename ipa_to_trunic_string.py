@@ -238,17 +238,25 @@ while lines[-1].strip() == "":
 normal_text: list = []
 ipa_text: list = []
 has_found_dividing_line: bool = False
+line_number: int = 0
+line_number_of_dividing_line: int = 0
 for line in lines:
+    line_number += 1
     if line.strip() == "-":
         has_found_dividing_line = True
+        line_number_of_dividing_line = line_number
         continue
     if has_found_dividing_line:
+        # check for incorrect translation
+        if line[0] == " " or line[-2] == " " or line.count("  ") > 0:
+            raise ValueError(f"incorrect space placement found. Most likely caused by a word failing to be translated to IPA by the runic translator. Detected in the string \"{line[:-1]}\" found on line {line_number} and {line_number - line_number_of_dividing_line}")
+            
         ipa_text.append(line.strip())
     else:
         normal_text.append(line.strip())
 
 if len(normal_text) != len(ipa_text):
-    print(f"something is wrong with the input file. The amount of normal text lines ({len(normal_text)}) is not the same as the amount of IPA text lines ({len(ipa_text)}). Is the dividing line not made as a row with just a \'-\'?")
+    raise ValueError(f"something is wrong with the input file. The amount of normal text lines ({len(normal_text)}) is not the same as the amount of IPA text lines ({len(ipa_text)}). Is the dividing line not made as a row with just a \'-\'?")
 
 
 # turn every item into the correct syntax for the odin arrays
