@@ -11,6 +11,8 @@ mention to Finji Discord that you are making this and that you want sentence lis
 
 come to think of it, the best way of doing this would probably be to first before the project is properly usable, you ask the discord to give you sentences so that you can actually compile the first complete version of the program. THEN you make the YouTube video about it, where you need to make sure to show how to install it since github is pretty confusing. In that video you can again ask for a list of sentences so that the collection can be even greater.
 
+NOTE! When talking about giving credit to people making sentences, you need to specify that the credit is given in the code, and not in the program itself! Also show them where they can see the code so that they can see their name in it!
+
 when you make the youtube video you should definitely use the comments as a place to submit more sentences. Note that you should tell them to read the start of the description to see if you are still up for adding more submissions, where the **first part** of the description should say something like "SENTENCE SUBMISSIONS ARE STILL OPEN!" if it is. Say that the format is as following
 ```
 the name you want to be credited in the code, and if you want to, other information that you are interested in commenting. Note that underneath this row, before the list of sentences, should be an empty row, so that it's clear where the sentence list starts to make it easier for you to copy-paste

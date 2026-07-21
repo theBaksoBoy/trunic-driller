@@ -1,29 +1,21 @@
-This is a test string to test realistic lengths of sentences.
-No ruin seeker! Don't take the last slice of pizza! It's mine!
-I hope this program is helping to improve your reading speed.
-I'm just four sentences in and my brain is already struggling...
-Astigmatism makes it harder to drive.
-Oh mama mia, Luigi is drunk again!
-"Giving aliens edibles is an act of war"
-When in doubt, radish it out!
-THERE IS BLOOD IN THE BOX!
-If I put you in a meatgrinder...
-I hope that my unhinged sentences get drowned out by better ones
-Vintage Story is a great game. You should go play it!
-Odin is an amazing programming language. You should use it!
-Linux is an awesome operating system. You should try it!
+Smoked meat, call that my rug burn.
+Fake horse spotted in downtown, officers on standby!
+I have impostor syndrome. I got to be my therapists least favorite patient.
+Sometimes I wake up at night and listen to the insects speak.
+Oh boy my male snake laid eggs!
+Burger King foot lettuce.
+This muffin is looking awfully like a hamster. Someone baked my hamster into a muffin.
+I came home late and we had no ice cubes in the freezer.
+What happens after we pass? is it blissful silence or will my wife be there?
+Who ate the last century egg?
 -
-ðɪs ɪz eɪ tɛst stɹɪŋ tu tɛst ɹiəɫɪstɪk ɫɛŋkθs əv sɛntənsəz.
-noʊ ɹuən sikɝ! doʊn teɪk ðə ɫæs sɫaɪs əv pitsə! ɪts maɪn!
-aɪ hoʊp ðɪs pɹoʊɡɹæm ɪz hɛɫpɪŋ tu ɪmpɹuv jɔɹ ɹɛdɪŋ spid.
-aɪm dʒəst fɔɹ sɛntənsəz ɪn ænd maɪ bɹeɪn ɪz ɔɹɛdi stɹəɡəɫɪŋ...
-əstɪɡmətɪzəm meɪks ɪt hɑɹdɝ tu dɹaɪv.
-oʊ mɑmə miə, ɫuidʒi ɪz dɹəŋk əɡeɪn!
-"ɡɪvɪŋ eɪɫiənz ɛdəbəɫz ɪz æn ækt əv wɔɹ"
-hwɛn ɪn daʊt, ɹædɪʃ ɪt aʊt!
-ðɛɹ ɪz bɫəd ɪn ðə bɑks!
-ɪf aɪ pʊt ju ɪn eɪ ...
-aɪ hoʊp ðæt maɪ ənhɪndʒd sɛntənsəz ɡɛt dɹaʊnd aʊt baɪ bɛtɝ wənz
-vɪntɪdʒ stɔɹi ɪz eɪ ɡɹeɪt ɡeɪm. ju ʃʊd ɡoʊ pɫeɪ ɪt!
-oʊdən ɪz æn əmeɪzɪŋ pɹoʊɡɹæmɪŋ ɫæŋɡwədʒ. ju ʃʊd jus ɪt!
-ɫɪnəks ɪz æn ɑsəm ɑpɝeɪtɪŋ sɪstəm. ju ʃʊd tɹaɪ ɪt!
+smoʊkt mit, kɔɫ ðæt maɪ ɹəɡ bɝn.
+feɪk hɔɹs spɑtɪd ɪn daʊntaʊn, ɔfəsɝz ɑn stændbaɪ!
+aɪ hæv ɪmpɔstɝ sɪndɹoʊm. aɪ ɡɑt tu bi maɪ θɛɹəpɪsts ɫist feɪvɝɪt peɪʃənt.
+səmtaɪmz aɪ weɪk əp æt naɪt ænd ɫɪsən tu ðə ɪnsɛkts spik.
+oʊ bɔɪ maɪ meɪɫ sneɪk ɫeɪd ɛɡz!
+bɝɡɝ kɪŋ fʊt ɫɛtəs.
+ðɪs məfən ɪz ɫʊkɪŋ ɑfɫi ɫaɪk eɪ hæmstɝ. səmwən beɪkt maɪ hæmstɝ ɪntu eɪ məfən.
+aɪ keɪm hoʊm ɫeɪt ænd wi hæd noʊ aɪs kjubz ɪn ðə fɹizɝ.
+hwət hæpənz æftɝ wi pæs? ɪz ɪt bɫɪsfəɫ saɪɫəns ɔɹ wɪɫ maɪ waɪf bi ðɛɹ?
+hu eɪt ðə ɫæs sɛntʃɝi ɛɡ?
