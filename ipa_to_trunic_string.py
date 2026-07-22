@@ -22,6 +22,13 @@ faɪv
 
 
 
+# this is what each phoneme gets converted to. Look at the table in https://tunic.wiki/books/secrets/page/trunic and compare it to the table below
+# o U a G F e L B I
+# V R Y E A Z i x W
+# -----------------
+# N H T S t w s r k
+# p f g d n m z j v
+# c   h M     y l b
 def ConvertToTrunicString(ipa_input: str) -> str:
     output_string: str = ""
 
