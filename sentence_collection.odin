@@ -21,8 +21,20 @@ sentence_collection: []StringSet = {
     {"Vintage Story is a great game. You should go play it!", "vintiy stRF iz B grBt gBm. jU SLd go plB it!"},
     {"Odin is an amazing programming language. You should use it!", "odZn iz an ZmBziN programiN laNgwZy. jU SLd jUs it!"},
     {"Linux is an awesome operating system. You should try it!", "linZks iz an GsZm GpVBtiN sistZm. jU SLd trI it!"},
+    {"The TUNIC soundtrack is absolutely phenomenal...", "MZ tUnik sWntrak iz absZlUtlF fZnGmZnZl..."},
 
-    // by: Jerma (obviously he didn't actively contribute to the project himself, but you get what I mean)
+    // taken from the TUNIC manual
+    {"Lost? See page twenty-eight.", "lGst? sF pBy twenF-Bt."},
+    {"Everything hurts way more when I\'m tired.", "evrFTiN hVts wB mR hwen Im tIVd."},
+    {"Keep your eye on your stamina-points!", "kFp jR I Gn jR stamZnZ-pxnts!"},
+    {"Face your adversaries!", "fBs jR advVsEFz!"},
+    {"At the start of evasion you have invulnerability.", "at MZ stGrt Zv FvBHZn jU hav invZlnVZbilitF."},
+    {"Cards can change its nature...", "kGrdz kan tSBny its nBtSV..."},
+    {"You can do it!", "jU kan dU it!"},
+    {"Where are the keys?", "hwE Gr MZ kFz?"},
+    {"Lets go and visit the hero\'s grave!", "lets go and vizit MZ hYoz grBv!"},
+    
+    // Jerma quotes
     {"\"Giving aliens edibles is an act of war\"", "\"giviN BlFZnz edZbZlz iz an akt Zv wR\""},
     {"When in doubt, radish it out!", "hwen in dWt, radiS it Wt!"},
     {"THERE IS BLOOD IN THE BOX!", "ME iz blZd in MZ bGks!"},
@@ -54,4 +66,18 @@ sentence_collection: []StringSet = {
     {"If I lived in a room without windows I think I would crumble to dust.", "if I lIvd in B rUm wiMWt windoz I TiNk I wLd krZmbZl tU dZst."},
     {"Sometimes I wonder if the crazy frog really was that crazy after all.", "sZmtImz I wZndV if MZ krBzF frGg rFlF wGz Mat krBzF aftV Gl."},
     {"Time waits for no one.", "tIm wBts fR no wZn."},
+
+    // by: Sveta
+    {"Oh, language practice? Try these on for size!", "o, laNgwZy praktZs? trI MFz Gn fR sIz!"}, // I know you probably didn't intend for this one to be used but hihihi
+    {"Why will we whittle wet whistles when winter whips?", "hwI wil wF hwitZl wet hwisZlz hwen wintV hwips?"},
+    {"Alliteration is my passion, but clearly not my strong suite.", "ZlitVBSZn iz mI paSZn, bZt klirlF nGt mI strGN swFt."},
+    {"My favorite word I learned this week is Hidalgo.", "mI fBvVit wVd I lVnd Mis wFk iz hZdalgo."},
+    {"I know why the caged bird sings.", "I no hwI MZ kByd bVd siNz."},
+    {"It is impractical to joist while on giraffe, but what a show!", "it iz impraktZkZl tU yxst hwIl Gn yVaf, bZt hwZt B So!"},
+
+    // by: 7dxxander
+    {"Through the darkness of futures past...", "TrU MZ dGrknZs Zv fjUtSVz past..."},
+    {"The magician longs to see.", "MZ mZyiSZn lGNz tU sF."},
+    {"One chants out between two worlds...", "wZn tSants Wt bFtwFn tU wVldz..."},
+    {"Fire walk with me.", "fIV wGk wiM mF."},
 }
