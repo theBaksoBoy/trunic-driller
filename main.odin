@@ -112,6 +112,8 @@ main :: proc()
     new_phrase_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(NEW_PHRASE_WAVE_DATA), 41208))
     start_sound = rl.LoadSoundFromWave(rl.LoadWaveFromMemory(".wav", raw_data(START_WAVE_DATA), 939672))
 
+    drawing_strokes = make([dynamic]DrawingStroke)
+    
     for !rl.WindowShouldClose() {
         Update()
         Draw()
@@ -129,30 +131,39 @@ Update :: proc()
     if rl.IsMouseButtonPressed(.LEFT) {
         mouse_position: rl.Vector2 = rl.GetMousePosition()
 
-        // logic when pressing the different buttons
-        // word selection button
-        if IsPosInRect(mouse_position, word_selection_button.rect) && program_state == .MENU {
+        // logic when pressing the different buttons 
+        if IsPosInRect(mouse_position, word_selection_button.rect) && program_state == .MENU { // word selection button
             IncrementButtonState(&word_selection_button)
             rl.PlaySound(select_sound)
         }
-        // practice type button
-        if IsPosInRect(mouse_position, practice_type_button.rect) && program_state == .MENU {
+        else if IsPosInRect(mouse_position, practice_type_button.rect) && program_state == .MENU { // practice type button
             IncrementButtonState(&practice_type_button)
             rl.PlaySound(select_sound)
         }
-        // start button
-        if IsPosInRect(mouse_position, start_button.rect) && program_state == .MENU {
+        else if IsPosInRect(mouse_position, start_button.rect) && program_state == .MENU { // start button
             program_state = .QUESTION
             word_selection = word_selection_button.states[word_selection_button.state_index]
             practice_type = practice_type_button.states[practice_type_button.state_index]
             GenerateNewPhrase()
+            ClearDrawingStrokes()
             rl.PlaySound(start_sound)
         }
-        // proceed button
-        if IsPosInRect(mouse_position, proceed_button.rect) && program_state != .MENU {
+        else if IsPosInRect(mouse_position, proceed_button.rect) && program_state != .MENU { // proceed button
             ToggleProgramState()
         }
+        else { // done in an else so that you can't start drawing when trying to press a button
+            StartDrawingStroke()
+        }
     }
+
+    // logic for when left mouse button is released
+    if rl.IsMouseButtonReleased(.LEFT) {
+        if is_stroke_being_drawn {
+            EndDrawingStroke()
+        }
+    }
+
+    UpdateDrawing()
 
     // make space and enter also possible to use for proceeding
     if rl.IsKeyPressed(.SPACE) || rl.IsKeyPressed(.ENTER) {
@@ -192,9 +203,15 @@ Draw :: proc()
         DrawButton(&word_selection_button)
         DrawButton(&practice_type_button)
         DrawButton(&start_button)
-    } else {
+    }
+    else {
         DrawButton(&proceed_button)
     }
+
+
+    DrawAllDrawingStrokes()
+    DrawEraser()
+
     
     // figure out the scale that the trunic should be rendered in, depending on the window size
     trunic_scale := f32(rl.GetMonitorWidth(monitor)) * 0.05
@@ -564,7 +581,8 @@ ToggleProgramState :: proc()
     if program_state == .QUESTION {
         proceed_button.state_index = 0
         rl.PlaySound(new_phrase_sound)
-    } else {
+    }
+    else {
         proceed_button.state_index = 1
         rl.PlaySound(select_sound)
     }
@@ -574,6 +592,7 @@ ToggleProgramState :: proc()
     // change the trunic and normal text string when going to the next item
     if program_state == .QUESTION {
         GenerateNewPhrase()
+        ClearDrawingStrokes()
     }
 }
 
@@ -673,4 +692,27 @@ GenerateNewPhrase :: proc()
         normal_text_to_display = string_set.normal_text
     }
     
+}
+
+
+
+DotVector2 :: proc(a, b: rl.Vector2) -> f32
+{
+    return a.x*b.x + a.y*b.y
+}
+
+
+
+MagnitudeSquaredVector2 :: proc(a: rl.Vector2) -> f32
+{
+    return a.x*a.x + a.y*a.y
+}
+
+
+
+GetSquaredDistanceFromPointToLine :: proc(pos, line_start, line_end: rl.Vector2) -> f32
+{
+    h: f32 = min(1, max(0, DotVector2(pos-line_start, line_end-line_start) / MagnitudeSquaredVector2(line_end-line_start)))
+
+    return MagnitudeSquaredVector2(pos-line_start-(line_end-line_start)*h)
 }
