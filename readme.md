@@ -10,42 +10,8 @@ For the second option, you get the following choices: "reading", "writing", and 
 
 To make it easier to practice writing, the program includes some basic drawing functionality. If you drag with your mouse you will create a straight line, and if you click without moving your mouse you will create a ring that can be placed on the bottom of runes. You can also erase by holding down right-click.
 
+When revealing the answer and when going to the next rune, you can of course click the button at the bottom of the screen, but you can also use the space or enter button if you find it faster.
+
 ## How to easily contribute to the project by adding more sentences
 
 The collection of sentences has to be very large to prevent the from appearing many times and thus be memorized, reducing the quality of the trunic practice. I would love to get help with adding to the collection of sentences, and if you contribute with any sentences then I will credit you with your name in the code, by the sentences that you have made (which can be seen in the file `sentence_colleciton.odin`). Take a look in the Discussions tab at the top of this github repository for more information!
-
-
-
-
-
-
-
-
-
-
-
-
-## WORK-IN-PROGRESS PART OF README
-
-TODO:
-- even though you have few sentences, release a v1.0.0 version before making any online posts about the project
-- Make a Reddit post about the project. Title it something like "I'm making a program for practicing trunic reading and writing speed, and I need help with making random sentences for the program to use!", where you in the description link to the repo and explain how the sentences should be and stuff. Note both for here and for the future, that when you say how long a sentence can be at max, it doesn't mean that sentences HAVE to be that long. Having short sentences is also very good, so that you don't just get long ones all the time when using the program
-
-mention to Finji Discord that you are making this and that you want sentence lists to use in the program! Say to structure it like the code-block you have a bit further down. Make sure to give some guidelines like allowed symbols, to use proper punctuation and capitalization, recommended max sentence length, to use normal words so that the IPA translator works, and also say that the more sentences they make the better! You should also give some example sentences so they have an idea what they can be of (they can be both TUNIC related or just completely random sentences. They can be goofy, they can be serious) Also tell them that you are going to make a video about the project later which you will then link in the discord (assuming that it is allowed at least)
-
-come to think of it, the best way of doing this would probably be to first before the project is properly usable, you ask the discord to give you sentences so that you can actually compile the first complete version of the program. THEN you make the YouTube video about it, where you need to make sure to show how to install it since github is pretty confusing. In that video you can again ask for a list of sentences so that the collection can be even greater.
-
-NOTE! When talking about giving credit to people making sentences, you need to specify that the credit is given in the code, and not in the program itself! Also show them where they can see the code so that they can see their name in it!
-
-when you make the youtube video you should definitely use the comments as a place to submit more sentences. Note that you should tell them to read the start of the description to see if you are still up for adding more submissions, where the **first part** of the description should say something like "SENTENCE SUBMISSIONS ARE STILL OPEN!" if it is. Say that the format is as following
-```
-the name you want to be credited in the code, and if you want to, other information that you are interested in commenting. Note that underneath this row, before the list of sentences, should be an empty row, so that it's clear where the sentence list starts to make it easier for you to copy-paste
-
-sentence 1
-sentence 2
-sentence 3
-```
-
-of course remember to change this readme file once the project is done to explain how the project works and stuff. You could potentially also mention how people can add more sentences if they want to, and how to do it.
-Mention how to proceed you can both click the "reveal"/"next" button, OR press space or enter.
-Mention how you erase with right mouse. Click to make a ring, and drag to make a line.
