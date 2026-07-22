@@ -1,7 +1,5 @@
 # trunic driller
 
-(ICON HERE!)
-
 A simple program for improving one's ability to both read and write trunic for the game TUNIC. Note that this project isn't intended to teach the fundamentals of the writing system, and is instead intended for improving one's efficiency at reading and writing with the system. If you want to actually learn how trunic works then I recommend [this YouTube video](https://youtu.be/PH8ktkDYO1Y). 
 
 The way this program works is very simple. Before you start practicing you will make two choices: What set of words/sentences to use, and if you want to focus on reading trunic, or writing normal text into trunic. 
@@ -13,6 +11,7 @@ For the second option, you get the following choices: "reading", "writing", and 
 To make it easier to practice writing, the program includes some basic drawing functionality. If you drag with your mouse you will create a straight line, and if you click without moving your mouse you will create a ring that can be placed on the bottom of runes. You can also erase by holding down right-click.
 
 ## How to easily contribute to the project by adding more sentences
+
 The collection of sentences has to be very large to prevent the from appearing many times and thus be memorized, reducing the quality of the trunic practice. I would love to get help with adding to the collection of sentences, and if you contribute with any sentences then I will credit you with your name in the code, by the sentences that you have made (which can be seen in the file `sentence_colleciton.odin`). Take a look in the Discussions tab at the top of this github repository for more information!
 
 
@@ -29,8 +28,7 @@ The collection of sentences has to be very large to prevent the from appearing m
 ## WORK-IN-PROGRESS PART OF README
 
 TODO:
-- in personal_instructions.org you need to fill in how to compile for Windows
-- when compiling for windows, see how you would assign an icon to the executable. A fun idea could be to try to immitate how items look in the game, and make a drill item. Also obviously go through the effort of finding out how to actually compile for it. Maybe also see if odin can be compiled to mac??? idk
+- even though you have few sentences, release a v1.0.0 version before making any online posts about the project
 - Make a Reddit post about the project. Title it something like "I'm making a program for practicing trunic reading and writing speed, and I need help with making random sentences for the program to use!", where you in the description link to the repo and explain how the sentences should be and stuff. Note both for here and for the future, that when you say how long a sentence can be at max, it doesn't mean that sentences HAVE to be that long. Having short sentences is also very good, so that you don't just get long ones all the time when using the program
 
 mention to Finji Discord that you are making this and that you want sentence lists to use in the program! Say to structure it like the code-block you have a bit further down. Make sure to give some guidelines like allowed symbols, to use proper punctuation and capitalization, recommended max sentence length, to use normal words so that the IPA translator works, and also say that the more sentences they make the better! You should also give some example sentences so they have an idea what they can be of (they can be both TUNIC related or just completely random sentences. They can be goofy, they can be serious) Also tell them that you are going to make a video about the project later which you will then link in the discord (assuming that it is allowed at least)

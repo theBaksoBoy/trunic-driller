@@ -11,5 +11,5 @@ These instructions are meant specifically for the creator of the project. I don'
 5. Go into =sentence_collection.odin= and paste in the output. Remember to make a comment crediting whoever it was that submitted the sentences!
    
 * Compiling for both Linux and Windows
-For Linux you obviously just run the following command in your Linux machine: =odin build . -o:speed=.
-When it comes to Windows I haven't figured it out as of writing this, so you will have to update this later. Make sure that the .exe has an icon assigned to it (as I'm pretty sure that is something you can do?)
+For Linux you obviously just run the following command in your Linux machine: =odin build . -o:speed=. The version of odin that you are using (as apparently the raylib package got updated?) is =odin version dev-2026-04-nightly:a896fb2=.
+When it comes to Windows, assuming that you are using your VM, ensure that you aren't using anything more recent than =dev-2026-07-nightly:ab0131c= (for reasons mentioned above). Manually replace the content in C:\programming\trunic-driller with the most recent content from the github repo, and then in cmd run =cd C:\programming\trunic-driller= and then =C:\Odin\odin.exe build . -o:speed=.

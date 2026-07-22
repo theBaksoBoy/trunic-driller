@@ -94,7 +94,7 @@ StringSet :: struct {
 main :: proc()
 {
     rl.SetConfigFlags({.WINDOW_RESIZABLE})
-    rl.InitWindow(700, 700, "trunic driller")
+    rl.InitWindow(1000, 1000, "trunic driller")
     rl.SetTargetFPS(60)
     rl.InitAudioDevice()
 
