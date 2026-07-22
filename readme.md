@@ -30,7 +30,6 @@ work-in-progress project. This file will be used as a TODO list until the projec
 
 TODO:
 
-- bruh the txt file misspelt "string"
 - actually fix the py so that if there is a space before a . or , then it errors. This has passed multiple times
 - in personal_instructions.org you need to fill in how to compile for Windows
 - just compile for windows

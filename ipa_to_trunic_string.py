@@ -236,7 +236,7 @@ def QuoteRepr(text: str) -> str:
 
 
 # parse input file
-with open("input_to_stirng_set.txt") as f:
+with open("input_to_string_set.txt") as f:
     lines = f.readlines()
 
 while lines[-1].strip() == "":
