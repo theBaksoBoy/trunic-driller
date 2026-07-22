@@ -44,7 +44,7 @@ sentence_collection: []StringSet = {
 
     // by: Albin
     {"Writing haikus is really not that hard.", "rItiN hIkUz iz rFlF nGt Mat hGrd."},
-    {"Whatever you do, never bring a sword to a swordfight.", "hwZtevV jU dU, nevV briN B sRd tU B ."},
+    {"Whatever you do, never bring a sword to a sword fight.", "hwZtevV jU dU, nevV briN B sRd tU B sɔɹd faɪt."},
     {"I think you need to stay at home more and meet less people.", "I TiNk jU nFd tU stB at hom mR and mFt les pFpZl."},
     {"Becoming an adult is realizing cheese is really expensive.", "bikZmiN an adZlt iz rFZlIziN tSFz iz rFlF ikspensiv."},
     {"I\'ve been really getting into giving up lately.", "Iv bin rFlF getiN intU giviN Zp lBtlF."},
