@@ -222,7 +222,8 @@ def ConvertToTrunicString(ipa_input: str) -> str:
             output_string += "b"
             continue
 
-        raise ValueError("no valid conversion was found for the start of this string:", ipa_input)
+        print("no valid conversion was found for the start of this string:", ipa_input)
+        exit()
 
     return output_string
 
@@ -255,15 +256,17 @@ for line in lines:
         continue
     if has_found_dividing_line:
         # check for incorrect translation
-        if line[0] == " " or line[-2] == " " or line.count("  ") > 0:
-            raise ValueError(f"incorrect space placement found. Most likely caused by a word failing to be translated to IPA by the runic translator. Detected in the string \"{line[:-1]}\" found on line {line_number} and {line_number - line_number_of_dividing_line}")
+        if line[0] == " " or line[-2] == " " or line.count("  ") > 0 or line.count(" .") > 0 or line.count(" ,") or line.count(" !") or line.count(" ?") or line.count(" \"") or line.count("\" ") or line.count(" \'") or line.count("\' "):
+            print(f"incorrect space placement found. Most likely caused by a word failing to be translated to IPA by the runic translator. Detected in the string \"{line[:-1]}\" on line {line_number} (pair of line {line_number - line_number_of_dividing_line})")
+            exit()
             
         ipa_text.append(line.strip())
     else:
         normal_text.append(line.strip())
 
 if len(normal_text) != len(ipa_text):
-    raise ValueError(f"something is wrong with the input file. The amount of normal text lines ({len(normal_text)}) is not the same as the amount of IPA text lines ({len(ipa_text)}). Is the dividing line not made as a row with just a \'-\'?")
+    print(f"something is wrong with the input file. The amount of normal text lines ({len(normal_text)}) is not the same as the amount of IPA text lines ({len(ipa_text)}). Is the dividing line not made as a row with just a \'-\'?")
+    exit()
 
 
 # turn every item into the correct syntax for the odin arrays
