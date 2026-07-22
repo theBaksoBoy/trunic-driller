@@ -1,0 +1,15 @@
+#+title: Personal instructions
+#+startup: content
+
+These instructions are meant specifically for the creator of the project. I don't trust my memory enough to remember how to add stuff to this project. If you want to add sentences please do so according to what is mentioned in readme.md and in the Discussions tab, as I want to process the submissions myself so that I can be 100% sure that everything was done correctly.
+
+* Adding new sentences
+1. Go into =input_to_string_set.txt= and paste in the submitted sentences.
+2. Paste the submitted sentences into https://aryanpingle.com/Runic/. If the site is down then you can /technically/ use https://ipachart.app/ipa-translator but it is ass, so avoid this as much as possible.
+3. In the txt file again, make a line underneath the pasted text and add a single dash/minus there. Go one row underneath this line and paste in the phonetic output from the website. Save the txt file.
+4. run =ipa_to_trunic_string.py= and copy the output.
+5. Go into =sentence_collection.odin= and paste in the output. Remember to make a comment crediting whoever it was that submitted the sentences!
+   
+* Compiling for both Linux and Windows
+For Linux you obviously just run the following command in your Linux machine: =odin build . -o:speed=.
+When it comes to Windows I haven't figured it out as of writing this, so you will have to update this later. Make sure that the .exe has an icon assigned to it (as I'm pretty sure that is something you can do?)
