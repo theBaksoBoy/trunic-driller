@@ -256,7 +256,7 @@ for line in lines:
         continue
     if has_found_dividing_line:
         # check for incorrect translation
-        if line[0] == " " or line[-2] == " " or line.count("  ") > 0 or line.count(" .") > 0 or line.count(" ,") or line.count(" !") or line.count(" ?") or line.count(" \"") or line.count("\" ") or line.count(" \'") or line.count("\' "):
+        if line[0] == " " or line[-2] == " " or line.count("  ") > 0 or line.count(" .") > 0 or line.count(" ,") or line.count(" !") or line.count(" ?") or line.count(" \" ") or line.count(" \' "):
             print(f"incorrect space placement found. Most likely caused by a word failing to be translated to IPA by the runic translator. Detected in the string \"{line[:-1]}\" on line {line_number} (pair of line {line_number - line_number_of_dividing_line})")
             exit()
             
