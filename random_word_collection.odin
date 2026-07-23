@@ -706,4 +706,7 @@ random_word_collection: []StringSet = {
     {"writing", "rItiN"},
     {"year", "jir"},
     {"youth", "jUT"},
+
+    {"parry", "pEF"},
+    {"dodge", "dGy"},
 }
