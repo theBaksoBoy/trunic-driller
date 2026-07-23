@@ -22,6 +22,9 @@ sentence_collection: []StringSet = {
     {"Odin is an amazing programming language. You should use it!", "odZn iz an ZmBziN programiN laNgwZy. jU SLd jUs it!"},
     {"Linux is an awesome operating system. You should try it!", "linZks iz an GsZm GpVBtiN sistZm. jU SLd trI it!"},
     {"The TUNIC soundtrack is absolutely phenomenal...", "MZ tUnik sWntrak iz absZlUtlF fZnGmZnZl..."},
+    {"Remember to check your posture!", "rFmembV tU tSek jR pGstSV!"},
+    {"Ordered ordering of ordinary lord hoards.", "RdVd RdViN Zv RdZnEF lRd hRdz."},
+    {"Hexagons are honestly overrated... triangles are where it\'s at!", "heksZgGns Gr GnZslF ovVrBtid... trIaNgZlz Gr hwE its at!"},
 
     // taken from the TUNIC manual
     {"Lost? See page twenty-eight.", "lGst? sF pBy twenF-Bt."},
