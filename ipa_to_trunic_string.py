@@ -39,7 +39,7 @@ def ConvertToTrunicString(ipa_input: str) -> str:
     while ipa_input != "":
 
         # include these symbols directly into the output
-        if ipa_input[0] in " .,!?-\"\'":
+        if ipa_input[0] in " .,!?-\"\':":
             output_string += ipa_input[0]
             ipa_input = ipa_input[1:]
             continue
@@ -144,10 +144,6 @@ def ConvertToTrunicString(ipa_input: str) -> str:
         if ipa_input[0] == "t":
             ipa_input = ipa_input[1:]
             output_string += "t"
-            continue
-        if ipa_input[0] == "w":
-            ipa_input = ipa_input[1:]
-            output_string += "w"
             continue
         if ipa_input[0] == "w":
             ipa_input = ipa_input[1:]
