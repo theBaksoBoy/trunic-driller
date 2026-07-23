@@ -264,6 +264,9 @@ DrawTrunicRune :: proc(trunic_rune: TrunicRune, scale: f32, row_width: f32)
         switch (trunic_rune.symbol) {
         case '.':
             rl.DrawCircleV(pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_MIDDLE_HEIGHT + RUNE_TOP_HEIGHT) * scale}, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+        case ':':
+            rl.DrawCircleV(pos + {RUNE_WIDTH * 0.3 * scale, RUNE_TOP_HEIGHT * scale}, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
+            rl.DrawCircleV(pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_MIDDLE_HEIGHT*2 + RUNE_TOP_HEIGHT) * scale}, RUNE_LINE_RADIUS*2 * scale, {255, 255, 255, 255})
         case ',':
             mid := pos + {RUNE_WIDTH * 0.3 * scale, (RUNE_MIDDLE_HEIGHT + RUNE_TOP_HEIGHT) * scale}
             rl.DrawTriangle(mid + {0.1 * RUNE_WIDTH * scale, -0.1 * RUNE_WIDTH * scale}, mid + {-0.1 * RUNE_WIDTH * scale, -0.1 * RUNE_WIDTH * scale}, mid + {-0.15 * RUNE_WIDTH * scale, 0.1 * RUNE_WIDTH * scale}, {255, 255, 255, 255})
@@ -544,7 +547,7 @@ AssignTrunicStringToTrunicRuneRow :: proc(trunic_string: string)
             }
             append(&trunic_rune_array, new_rune)
             switch rune(trunic_string[i]) {
-            case '.', ',', '!':
+            case '.', ',', '!', ':':
                 x_position += RUNE_WIDTH * 0.5
             case '?':
                 x_position += RUNE_WIDTH * 0.7
@@ -691,7 +694,6 @@ GenerateNewPhrase :: proc()
         AssignTrunicStringToTrunicRuneRow(string_set.trunic_string)
         normal_text_to_display = string_set.normal_text
     }
-    
 }
 
 
