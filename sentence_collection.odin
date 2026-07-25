@@ -38,7 +38,7 @@ sentence_collection: []StringSet = {
     {"Let's go and visit the hero\'s grave!", "lets go and vizit MZ hYoz grBv!"},
     
     // Jerma quotes
-    {"\"Giving aliens edibles is an act of war\"", "\"giviN BlFZnz edZbZlz iz an akt Zv wR\""},
+    {"Giving aliens edibles is an act of war", "giviN BlFZnz edZbZlz iz an akt Zv wR"},
     {"When in doubt, radish it out!", "hwen in dWt, radiS it Wt!"},
     {"THERE IS BLOOD IN THE BOX!", "ME iz blZd in MZ bGks!"},
     {"If I put you in a meat grinder...", "if I pLt jU in B mFt grIndV..."},
@@ -178,4 +178,21 @@ sentence_collection: []StringSet = {
     {"Have you had water?", "hav jU had wGtV?"},
     {"Have you slept?", "hav jU slept?"},
     {"I hope you\'re doing fine.", "I hop jUr dUiN fIn."},
+
+    // by: GrapeDragon
+    {"I like your ears and tail!", "I lIk jR Yz and tBl!"},
+    {"This stick does not work very well.", "Mis stik dZz nGt wVk vEF wel."},
+    {"Erm, what the slorm?", "Em, hwZt MZ slRm?"},
+    {"I have spent too much money on Spyro merchandise.", "I hav spent tU mZtS mZnF Gn spIro mVtSZndIz."},
+
+    // by: small-piece-of-grass
+    {"My battery is almost dead.", "mI batVF iz Glmost ded."},
+    {"Can you believe it?", "kan jU bilFv it?"},
+    {"I had a long day.", "I had B lGN dB."},
+    {"I keep dreaming about summer camp.", "I kFp drFmiN ZbWt sZmV kamp."},
+    {"Isn’t it curious sometimes?", "izZn it kjLrFZs sZmtImz?"},
+    {"I’m not an idiot! Though I may be a fool...", "Im nGt an idFZt! Mo I mB bF B fUl..."},
+    {"What do you think about often?", "hwZt dU jU TiNk ZbWt GfZn?"},
+    {"Well, here we are, nothing we can do.", "wel, hY wF Gr, nZTiN wF kan dU."},
+    {"Sometimes things look prettier as ruins!", "sZmtImz TiNz lLk pritFV az rUZnz!"},
 }
