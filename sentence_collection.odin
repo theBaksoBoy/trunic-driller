@@ -45,8 +45,12 @@ sentence_collection: []StringSet = {
 
     // quote by u/idonotlikethisrock
     {"You\'re just mad that my shiny bald head is brighter than your future.", "jUr yZst mad Mat mI SInF bGld hed iz brItV Man jR fjUtSV."},
+
+    
+    // user submitted sentences
     
     // by: big papa (idk man)
+    // amount: 12
     {"My left foot is shaped like a United States state.", "mI left fLt iz SBpt lIk B jUnItid stBts stBt."},
     {"My doctor asked me to stop calling him with a surly sensual voice.", "mI dGktV askt mF tU stGp kGliN him wiM B sVlF senSZwZl vxs."},
     {"Smoked meat, call that my rug burn.", "smokt mFt, kGl Mat mI rZg bVn."},
@@ -61,6 +65,7 @@ sentence_collection: []StringSet = {
     {"Who ate the last century egg?", "hU Bt MZ las sentSVF eg?"},
 
     // by: Albin
+    // amount: 11
     {"Writing haikus is really not that hard.", "rItiN hIkUz iz rFlF nGt Mat hGrd."},
     {"Whatever you do, never bring a sword to a sword fight.", "hwZtevV jU dU, nevV briN B sRd tU B sɔɹd faɪt."},
     {"I think you need to stay at home more and meet less people.", "I TiNk jU nFd tU stB at hom mR and mFt les pFpZl."},
@@ -74,6 +79,7 @@ sentence_collection: []StringSet = {
     {"Time waits for no one.", "tIm wBts fR no wZn."},
 
     // by: Sveta
+    // amount: 6
     {"Oh, language practice? Try these on for size!", "o, laNgwZy praktZs? trI MFz Gn fR sIz!"}, // I know you probably didn't intend for this one to be used but hihihi
     {"Why will we whittle wet whistles when winter whips?", "hwI wil wF hwitZl wet hwisZlz hwen wintV hwips?"},
     {"Alliteration is my passion, but clearly not my strong suite.", "ZlitVBSZn iz mI paSZn, bZt klirlF nGt mI strGN swFt."},
@@ -82,12 +88,14 @@ sentence_collection: []StringSet = {
     {"It is impractical to joist while on giraffe, but what a show!", "it iz impraktZkZl tU yxst hwIl Gn yVaf, bZt hwZt B So!"},
 
     // by: dxxander
+    // amount: 4
     {"Through the darkness of future's past,", "TrU MZ dGrknZs Zv fjUtSVz past,"},
     {"The magician longs to see.", "MZ mZyiSZn lGNz tU sF."},
     {"One chants out between two worlds,", "wZn tSants Wt bFtwFn tU wVldz,"},
     {"Fire, walk with me.", "fIV, wGk wiM mF."},
 
     // by: DonQuijote
+    // amount: 43
     {"The thieving scholar who seeks the cross but does not understand.", "MZ TFviN skGlV hU sFks MZ krGs bZt dZz nGt ZndVstand."},
     {"These gifts are fake.", "MFz gifs Gr fBk."},
     {"They used to be alive.", "MB jUzd tU bF ZlIv."},
@@ -133,6 +141,7 @@ sentence_collection: []StringSet = {
     {"Spoiler, there might be a \"secret legend\".", "spxlV, ME mIt bF B \"sFkrZt leyZnd\"."},   
 
     // by: Quantodeluz
+    // amount: 45
     {"Nothing that can\'t be solved with some G U N", "nZTiN Mat kant bF sGlvd wiM sZm yF jU en"},
     {"Fairy fairy, come and speak. Show the way to what I seek!", "fEF fEF, kZm and spFk. So MZ wB tU hwZt I sFk!"},
     {"The notes Mason! What do they mean!?", "MZ nots mBsZn! hwZt dU MB mFn!?"},
@@ -180,12 +189,14 @@ sentence_collection: []StringSet = {
     {"I hope you\'re doing fine.", "I hop jUr dUiN fIn."},
 
     // by: GrapeDragon
+    // amount: 4
     {"I like your ears and tail!", "I lIk jR Yz and tBl!"},
     {"This stick does not work very well.", "Mis stik dZz nGt wVk vEF wel."},
     {"Erm, what the slorm?", "Em, hwZt MZ slRm?"},
     {"I have spent too much money on Spyro merchandise.", "I hav spent tU mZtS mZnF Gn spIro mVtSZndIz."},
 
     // by: small-piece-of-grass
+    // amount: 9
     {"My battery is almost dead.", "mI batVF iz Glmost ded."},
     {"Can you believe it?", "kan jU bilFv it?"},
     {"I had a long day.", "I had B lGN dB."},
