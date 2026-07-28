@@ -14,4 +14,4 @@ When revealing the answer and when going to the next rune, you can of course cli
 
 ## How to easily contribute to the project by adding more sentences
 
-The collection of sentences has to be very large to prevent the from appearing many times and thus be memorized, reducing the quality of the trunic practice. I would love to get help with adding to the collection of sentences, and if you contribute with any sentences then I will credit you with your name in the code, by the sentences that you have made (which can be seen in the file `sentence_colleciton.odin`). Take a look in the Discussions tab at the top of this github repository for more information!
+The collection of sentences has to be very large to prevent the from appearing many times and thus be memorized, reducing the quality of the trunic practice. I would love to get help with adding to the collection of sentences, and if you contribute with any sentences then I will credit you with your name in all future releases of the program. Take a look in the Discussions tab at the top of this github repository for more information!
