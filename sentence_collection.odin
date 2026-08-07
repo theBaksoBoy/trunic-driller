@@ -93,7 +93,7 @@ sentence_collection: []StringSet = {
     
     // user submitted sentences
     
-    // by: big papa (idk man)
+    // by: big papa
     // amount: 12
     {"My left foot is shaped like a United States state.", "mI left fLt iz SBpt lIk B jUnItid stBts stBt."},
     {"My doctor asked me to stop calling him with a surly sensual voice.", "mI dGktV askt mF tU stGp kGliN him wiM B sVlF senSZwZl vxs."},
