@@ -87,6 +87,10 @@ def ConvertToTrunicString(ipa_input: str) -> str:
                 ipa_input = ipa_input[2:]
                 output_string += "y"
                 continue
+            if ipa_input[:2] == "tʃ":
+                ipa_input = ipa_input[2:]
+                output_string += "c"
+                continue
 
         # do all the one-character runes
         if ipa_input[0] == "u":
